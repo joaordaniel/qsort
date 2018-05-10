@@ -1,0 +1,43 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+library(qsort)
+```
+
+# qsort
+
+The qsort package allows the computation of social competence and
+self-esteem scores for California Child Q-set (CCQ; Block and Block, 1969)
+and Preschool Q-set data (PQ; Baumrind, 1968 revised by Wanda Bronson),
+as described in Waters et al. (1985). The package includes a dataset
+with all CCQ and PQ Q-set items and the corresponding criterion scores
+for social competence, self-esteem and social desirability.
+
+The qsort package can be installed from github:
+
+```{r, eval = F}
+# install.packages("devtools")
+devtools::install_github("joaordaniel/qsort")
+```
+
+## Example
+
+The example bellow shows how to use qsort_score function
+to compute CCQ social competence and self-esteem scores
+from data present in ex_qsort dataset
+
+```{r example}
+## data_ccq <- qsort_score(ex_qsort, qset = "ccq", subj_id = "participant", group_id = "classroom")
+## data_ccq
+```
