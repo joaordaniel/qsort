@@ -31,6 +31,7 @@ to compute CCQ social competence and self-esteem scores
 from data present in ex_qsort dataset
 
 ```{r example}
+library(qsort)
 data_ccq <- qsort_score(ex_qsort, qset = "ccq", subj_id = "participant", group_id = "classroom")
 data_ccq
 ```
