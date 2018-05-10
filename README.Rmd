@@ -27,6 +27,8 @@ for social competence, self-esteem and social desirability.
 The qsort package can be installed from github:
 
 ```{r, eval = F}
+# to install packages from github you first need to install devtools package,
+# if you haven't done so already
 # install.packages("devtools")
 devtools::install_github("joaordaniel/qsort")
 ```
@@ -38,6 +40,6 @@ to compute CCQ social competence and self-esteem scores
 from data present in ex_qsort dataset
 
 ```{r example}
-## data_ccq <- qsort_score(ex_qsort, qset = "ccq", subj_id = "participant", group_id = "classroom")
-## data_ccq
+data_ccq <- qsort_score(ex_qsort, qset = "ccq", subj_id = "participant", group_id = "classroom")
+data_ccq
 ```
