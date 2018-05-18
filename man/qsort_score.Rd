@@ -4,58 +4,62 @@
 \alias{qsort_score}
 \title{qsort_score}
 \usage{
-qsort_score(x, qset = c("pq", "ccq"), subj_id = NULL, group_id = NULL)
+qsort_score(x, qset = names(qsets), item1, subj_id = NULL,
+  group_id = NULL)
 }
 \arguments{
-\item{x}{a data frame. x should be in wide format, with each subject data in
-one row and the scores for CCQ and PQ items in different columns. CCQ and
-PQ column names should be named sequentially from ccq1 to ccq100 and/or
-from pq1 to pq72 (both CCQ and PQ Q-sort data can coexist in the same data
-frame). qsort_score function is case insensitive for item column names
-(i.e., CCQ1 or ccq1 will both work), but there should be no spaces in
-column names. Q-set items should be scored 1 to 9 (most uncharacteristic to
-most characteristic of the subject).}
+\item{x}{data frame. x should be in wide format, with each subject data in
+one row and the scores for qset items in different columns. Columns with
+qset item scores should be ordered sequentially from item 1 to the last
+item.}
 
-\item{qset}{either qset = "pq" or qset = "ccq".}
+\item{qset}{"aqs" for Attachment Q-set (version 3.0) (Waters, 1995); "ccq" for
+California Child Q-set (Block & Block, 1969); "mbqs" for Maternal
+Behaviour Q-set (version 3.1) (Pederson et al., 1999); and "pq" for
+Preschool Q-set (Baumrind, 1968 revised by Wanda Bronson).}
 
-\item{subj_id}{optional. Column name of x that includes subjects'
-identification codes.}
+\item{item1}{column name of x containing item 1 qset score}
 
-\item{group_id}{optional. Column name of x that includes groups'
-identification codes.}
+\item{subj_id}{optional. Column name of x with subjects' identification codes.}
+
+\item{group_id}{optional. Column name of x with groups' identification codes.}
 }
 \value{
-a data frame. data frame will have 4 to 6 columns: subject id -
-  (optional) subject identification; group id - (optional) group
-  identification; scomp - social competence scores; sest - self-esteem
-  scores; missing - number of missing item scores in x (if any); qset - q set
-  identification.
+a data frame. This data frame will have a varying number of columns
+ depending on the number of available criteria sorts and scales for the
+ selected qset. Column names ending in "_c" refer to criteria sorts' scores, while
+ column names ending in "_s" refer to scales' scores. The different types of criteria
+ sorts and scales for each qset can be consulted in the documentation of
+ qsets object (?qsets).
 }
 \description{
-qsort_score returns social competence and self-esteem scores (partial
-correlations) for California Child Q-set (CCQ; Block and Block, 1969) or
-Preschool Q-set data (PQ; Baumrind, 1968 revised by Wanda Bronson) using the
-criterion scores presented in Waters et al. (1985), while controlling for
-social desirability.
+qsort_score returns a data frame with scores derived from criteria Q-sorts and
+from scales created from subsets of items.
 }
 \examples{
-data_ccq <- qsort_score(ex_qsort,
-                        qset = "ccq",
-                        subj_id = "participant",
-                        group_id = "classroom")
+data_ccq <- qsort_score(ex_qsort$ccq,
+                       qset = "ccq",
+                       item1 = "ccq1",
+                       subj_id = "participant",
+                       group_id = "classroom")
 data_ccq
+
+data_aqs <- qsort_score(ex_qsort$aqs,
+                       qset = "aqs",
+                       item1 = "aqs1")
 
 }
 \references{
 Baumrind, D. (1968). Manual for the Preschool Behaviour Q-set.
-  Parental Research Project. Berkeley, CA: Institute of Human Development,
-  University of California.
+ Parental Research Project. Berkeley, CA: Institute of Human Development,
+ University of California.
 
-  Block, J. H., & Block, J. (1969). The California Child Q-Set. Berkeley, CA:
-  Institute of Human Development, University of California.
+ Block, J. H., & Block, J. (1969). The California Child Q-Set. Berkeley, CA:
+ Institute of Human Development, University of California.
 
-  Waters, E., Noyes, D. M., Vaughn, B. E., & Ricks, M. (1985). Q-sort
-  definitions of social competence and self-esteem: Discriminant validity of
-  related constructs in theory and data. Developmental Psychology, 21,
-  508-522.
+ Pederson, D. R., Moran, G., & and Bento, S. (1999). Maternal Behaviour
+ Q-sort (version 3.1). London, ON: Psychology Department, Western University.
+
+ Waters, E. (1995). Appendix A: The attachment Q-set (Version 3. 0).
+ Monographs of the Society for Research in Child Development, 60, 234–246.
 }

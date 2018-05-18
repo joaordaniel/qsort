@@ -1,16 +1,16 @@
 Package: qsort
 Type: Package
-Title: Criterion scoring for Q-set data
-Version: 0.1.0
+Title: Scoring Q-sort data
+Version: 0.2.0
 Author: João R Daniel, David N Sousa
 Maintainer: João R Daniel <joaordaniel@mail.com>
-Description: Computes social competence and self-esteem scores for
-    California Child Q-set (CCQ; Block and Block, 1969) and
-    Preschool Q-set dat (PQ; Baumrind, 1968 revised by Wanda Bronson),
-    as described in Waters et al. (1985).
-    The package includes a dataset with all CCQ and PQ Q-set items
-    and the corresponding criterion scores for social competence,
-    self-esteem and social desirability.
+Description: Computes scores from Q-sort data, using criteria sorts and
+  derived scales from subsets of items.
+  qsort package includes datasets for four different Q-sets:
+  Attachment Q-set (AQS; version 3.0);
+  California Child Q-set (CCQ; Block and Block, 1969); 
+  Maternal Behaviour Q-set (version 3.1) (MBQS; Pederson et al., 1999);
+  Preschool Q-set (PQ; Baumrind, 1968 revised by Wanda Bronson).
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

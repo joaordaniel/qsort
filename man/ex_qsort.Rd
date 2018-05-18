@@ -3,27 +3,26 @@
 \docType{data}
 \name{ex_qsort}
 \alias{ex_qsort}
-\title{Example dataset}
-\format{A data frame with 15 rows and 174 variables:
+\title{Example datasets}
+\format{Data frames with 10 rows and a variable number of columns, depending
+  on the number of Q-set items (AQS = 90, CCQ = 100, MBQS = 90, PQ = 72)
   \describe{
   \item{participant}{subject identification}
   \item{classroom}{group identification}
-  \item{ccq1 to ccq100}{ccq items' scores}
-  \item{pq1 to pq100}{pq items' scores} }}
+  \item{qset1 to ...}{items' scores}
+  }}
 \usage{
 ex_qsort
 }
 \description{
-An hypothetical dataset containing both CCQ and PQ Q-set data.
+A list containing 5 hypothetical Q-sort datasets.
 }
 \details{
-Q-set items' scores (CCQ: columns 3 to 102, PQ: columns 103 to 174),
-plus two identification columns: subject and a group (first two columns).
-
-For this example items were given random scores (1 to 9; least to most
+For these examples items were given random scores (1 to 9; least to most
 characteristic respectively) following a rectangular distribution. For the CCQ
 Q-set this corresponds to placing 11 items in each of the 9 categories, plus
 an additional one in the center category (i.e., 12 items in category 5). For
-the PQ Q-set all the 9 categories include 8 items.
+the remaining Q-sets all the 9 categories include the same number of items
+(AQS = 10, MBQS = 10, PQ = 8).
 }
 \keyword{datasets}
