@@ -12,6 +12,7 @@ Description: Computes scores from Q-sort data, using criteria sorts and
   Maternal Behaviour Q-set (version 3.1) (MBQS; Pederson et al., 1999);
   Preschool Q-set (PQ; Baumrind, 1968 revised by Wanda Bronson).
 Imports: dplyr,
+         magrittr,
          purrr
 License: GPL-3
 Encoding: UTF-8
