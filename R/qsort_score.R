@@ -145,7 +145,8 @@ qsort_score <- function(x, qset = names(qsets), item1, subj_id = NULL, group_id 
                   dplyr::mutate(item = if_else((scales_inv == 1), (10 - item), as.numeric(item))) %>%
                   dplyr::group_by(scales) %>%
                   dplyr::summarise(sscore = mean(item, na.rm=T)) %>%
-                  dplyr::filter(!is.na(scales))
+                  dplyr::filter(!is.na(scales)) %>%
+                  as.data.frame()
 
 # store each score in a separate column of temp_s2
 # name them accordingly
@@ -170,6 +171,13 @@ qsort_score <- function(x, qset = names(qsets), item1, subj_id = NULL, group_id 
 
 # round numeric variables to three digits
   qsort_data <- purrr::modify_if(qsort_data, ~is.numeric(.), ~round(., 3))
+
+# remove attributes of numeric variables
+  for(i in 1:ncol(qsort_data)){
+    if(is.numeric(qsort_data[[i]])){
+      attributes(qsort_data[[i]]) <- NULL
+    }
+  }
 
 # return output
   qsort_data
