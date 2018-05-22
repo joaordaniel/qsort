@@ -1,8 +1,8 @@
 #'Example datasets
 #'
-#'A list containing 5 hypothetical Q-sort datasets.
+#'A list containing 4 hypothetical Q-sort datasets.
 #'
-#'For these examples items were given random scores (1 to 9; least to most
+#'For these examples, items were given random scores (1 to 9; least to most
 #'characteristic respectively) following a rectangular distribution. For the CCQ
 #'Q-set this corresponds to placing 11 items in each of the 9 categories, plus
 #'an additional one in the center category (i.e., 12 items in category 5). For
@@ -12,9 +12,9 @@
 #' @format Data frames with 10 rows and a variable number of columns, depending
 #'   on the number of Q-set items (AQS = 90, CCQ = 100, MBQS = 90, PQ = 72)
 #'   \describe{
-#'   \item{participant}{subject identification}
-#'   \item{classroom}{group identification}
-#'   \item{qset1 to ...}{items' scores}
+#'   \item{participant}{Subject identification.}
+#'   \item{classroom}{Group identification.}
+#'   \item{qset1 to ...}{Items' scores.}
 #'   }
 #'
 "ex_qsort"

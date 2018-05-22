@@ -3,24 +3,30 @@
 #'qsort_score returns a data frame with scores derived from criteria Q-sorts and
 #'from scales created from subsets of items.
 #'
-#'@param x data frame. x should be in wide format, with each subject data in
-#'  one row and the scores for qset items in different columns. Columns with
-#'  qset item scores should be ordered sequentially from item 1 to the last
-#'  item.
+#'@param x data frame. x should be in wide format, with each subject data in one
+#'  row and the scores for qset items in different columns. Columns for qset
+#'  items' scores should be ordered sequentially from left to right, starting
+#'  with item 1.
+#'
 #'@param qset "aqs" for Attachment Q-set (version 3.0) (Waters, 1995); "ccq" for
 #'  California Child Q-set (Block & Block, 1969); "mbqs" for Maternal
 #'  Behaviour Q-set (version 3.1) (Pederson et al., 1999); and "pq" for
 #'  Preschool Q-set (Baumrind, 1968 revised by Wanda Bronson).
-#'@param item1 column name of x containing item 1 qset score
-#'@param subj_id optional. Column name of x with subjects' identification codes.
-#'@param group_id optional. Column name of x with groups' identification codes.
+#'@param item1 Column name of x containing item 1 score
+#'@param subj_id Optional. Column name of x with subjects' identification codes.
+#'@param group_id Optional. Column name of x with groups' identification codes.
 #'
-#'@return a data frame. This data frame will have a varying number of columns
+#'@return A data frame. This data frame will have a varying number of columns
 #'  depending on the number of available criteria sorts and scales for the
-#'  selected qset. Column names ending in "_c" refer to criteria sorts' scores, while
-#'  column names ending in "_s" refer to scales' scores. The different types of criteria
-#'  sorts and scales for each qset can be consulted in the documentation of
-#'  qsets object (?qsets).
+#'  selected Q-set. Column names ending in "_c" refer to criteria sorts' scores,
+#'  while column names ending in "_s" refer to scales' scores. Following Waters
+#'  et al.'s (1985) suggestion about the influence of social desirability bias
+#'  in Q-sort data, for Q-sets that have social desirability criterion scores,
+#'  this data frame will also include criteria sorts' scores controlled for
+#'  social desirability (i.e., partial correlations). Column names starting with
+#'  "partial_" refer to these scores. The different criteria sorts and scales
+#'  for each Q-set can be consulted in the documentation of qsets object
+#'  (?qsets).
 #'
 #'@export
 #'
@@ -47,7 +53,11 @@
 #'  Q-sort (version 3.1). London, ON: Psychology Department, Western University.
 #'
 #'  Waters, E. (1995). Appendix A: The attachment Q-set (Version 3. 0).
-#'  Monographs of the Society for Research in Child Development, 60, 234–246.
+#'  Monographs of the Society for Research in Child Development, 60, 234-246.
+#'
+#'  Waters, E., Noyes, D. M., Vaughn, B. E., & Ricks, M. (1985). Q-sort
+#'  definitions of social competence and self-esteem: Discriminant validity of
+#'  related constructs in theory and data. Developmental Psychology, 21, 508-522.
 
 qsort_score <- function(x, qset = names(qsets), item1, subj_id = NULL, group_id = NULL) {
 # store number of items of each qset
@@ -124,13 +134,13 @@ qsort_score <- function(x, qset = names(qsets), item1, subj_id = NULL, group_id 
         temp_s <- cbind(t(x[i, sel_x]),
                         qsets[[qset]][ , scales[j]],
                         qsets[[qset]][ , scales_inv[j]])
-        names(temp_s) <- c("row", scales[j], scales_inv[j])
+        names(temp_s) <- c("item", scales[j], scales_inv[j])
 
 # invert scores
-        temp_s$row[!is.na(temp_s[ , 3])] <- 10 - temp_s$row[!is.na(temp_s[ , 3])]
+        temp_s$item[!is.na(temp_s[ , 3])] <- 10 - temp_s$item[!is.na(temp_s[ , 3])]
 
 # compute scores for each scale
-        temp_s <- plyr::ddply(temp_s, scales[j],summarise, mean(row, na.rm = T))
+        temp_s <- plyr::ddply(temp_s, scales[j],summarise, mean(item, na.rm = T))
         temp_s <- temp_s[!is.na(temp_s[[1]]), ]
 
 # store each score in a separate column of temp_s2
