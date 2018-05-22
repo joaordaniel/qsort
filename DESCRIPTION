@@ -11,7 +11,7 @@ Description: Computes scores from Q-sort data, using criteria sorts and
   California Child Q-set (CCQ; Block and Block, 1969); 
   Maternal Behaviour Q-set (version 3.1) (MBQS; Pederson et al., 1999);
   Preschool Q-set (PQ; Baumrind, 1968 revised by Wanda Bronson).
-Imports: plyr,
+Imports: dplyr,
          purrr
 License: GPL-3
 Encoding: UTF-8

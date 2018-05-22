@@ -134,14 +134,13 @@ qsort_score <- function(x, qset = names(qsets), item1, subj_id = NULL, group_id 
         temp_s <- cbind(t(x[i, sel_x]),
                         qsets[[qset]][ , scales[j]],
                         qsets[[qset]][ , scales_inv[j]])
-        names(temp_s) <- c("item", scales[j], scales_inv[j])
+        names(temp_s) <- c("item", "scales", "scales_inv")
 
-# invert scores
-        temp_s$item[!is.na(temp_s[ , 3])] <- 10 - temp_s$item[!is.na(temp_s[ , 3])]
-
-# compute scores for each scale
-        temp_s <- plyr::ddply(temp_s, scales[j],summarise, mean(item, na.rm = T))
-        temp_s <- temp_s[!is.na(temp_s[[1]]), ]
+# invert items and compute scales' scores
+        temp_s <- temp_s %>%
+                  mutate(item = if_else((scales_inv == 1), (10 - item), as.numeric(item))) %>%
+                  group_by(scales) %>% summarise(sscore = mean(item, na.rm=T)) %>%
+                  filter(!is.na(scales))
 
 # store each score in a separate column of temp_s2
 # name them accordingly
