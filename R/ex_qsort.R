@@ -1,6 +1,6 @@
 #'Example datasets
 #'
-#'A list containing 4 hypothetical Q-sort datasets.
+#'A list containing four hypothetical Q-sort datasets.
 #'
 #'For these examples, items were given random scores (1 to 9; least to most
 #'characteristic respectively) following a rectangular distribution. For the CCQ

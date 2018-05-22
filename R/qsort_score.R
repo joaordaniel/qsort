@@ -16,17 +16,17 @@
 #'@param subj_id Optional. Column name of x with subjects' identification codes.
 #'@param group_id Optional. Column name of x with groups' identification codes.
 #'
-#'@return A data frame. This data frame will have a varying number of columns
-#'  depending on the number of available criteria sorts and scales for the
-#'  selected Q-set. Column names ending in "_c" refer to criteria sorts' scores,
-#'  while column names ending in "_s" refer to scales' scores. Following Waters
-#'  et al.'s (1985) suggestion about the influence of social desirability bias
-#'  in Q-sort data, for Q-sets that have social desirability criterion scores,
-#'  this data frame will also include criteria sorts' scores controlled for
-#'  social desirability (i.e., partial correlations). Column names starting with
-#'  "partial_" refer to these scores. The different criteria sorts and scales
-#'  for each Q-set can be consulted in the documentation of qsets object
-#'  (?qsets).
+#'@return qsort_score function returns a data frame. This data frame will have a
+#'  varying number of columns depending on the number of available criteria
+#'  sorts and scales for the selected Q-set. Column names ending in "_c" refer
+#'  to criteria sorts' scores, while column names ending in "_s" refer to
+#'  scales' scores. Following Waters et al.'s (1985) suggestion about the
+#'  influence of social desirability bias in Q-sort data, for Q-sets that have
+#'  social desirability criterion scores, this data frame will also include
+#'  criteria sorts' scores controlled for social desirability (i.e., partial
+#'  correlations). Column names starting with "partial_" refer to these scores.
+#'  The different criteria sorts and scales for each Q-set can be consulted in
+#'  the documentation of qsets object (?qsets).
 #'
 #'@export
 #'

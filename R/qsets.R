@@ -2,7 +2,9 @@
 #'
 #' A list containing four different datasets: Attachment Q-set (AQS; version
 #' 3.0), California Child Q-set (CCQ); Maternal Behaviour Q-set (MBQS; version
-#' 3.1); and Preschool Q-set (PQ).
+#' 3.1); and Preschool Q-set (PQ). In these datasets, column names ending in
+#' "_c" refer to criteria sorts' scores, while column names ending in "_s" refer
+#' to scales' scores.
 #'
 #'@format
 #' \enumerate{
@@ -12,9 +14,14 @@
 #'   \item{qset}{aqs. Attachment Q-set (version 3.0) (Waters, 1995).}
 #'   \item{sec_c}{Security criterion scores (retrieved from Waters et al., 1995).}
 #'   \item{dep_c}{Dependency criterion scores (retrieved from Waters et al., 1995).}
-#'   \item{pederson_s}{Pederson & Moran's (1995) scales (retrieved from Waters et al., 1995).}
+#'   \item{pederson_s}{Pederson & Moran's (1995) scales (retrieved from Waters
+#'   et al., 1995). comp = compliance; sb = secure base, fd = fussy/difficult;
+#'   epc = enjoys physical contact; as = affective sharing.}
 #'   \item{pederson_s_inv}{Items to be inverted in Pederson and Moran scales.}
-#'   \item{posada_s}{Posada et al.'s (1995) scales (retrieved from Waters et al., 1995).}
+#'   \item{posada_s}{Posada et al.'s (1995) scales (retrieved from Waters et
+#'   al., 1995). sim = smooth interactions with mother; pcm = physical contact
+#'   with mother; ioa = interactions with other adults; pm = proximity to
+#'   mother.}
 #'   \item{posada_s_inv}{Items to be inverted in Posada et al.'s scales.}
 #'   \item{description}{Item description (retrieved from Waters, 1995).}
 #' }
