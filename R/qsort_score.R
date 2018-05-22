@@ -30,7 +30,7 @@
 #'
 #'@export
 #'
-#'@importFrom dplyr filter group_by mutate summarise
+#'@importFrom dplyr if_else filter group_by mutate summarise
 #'@importFrom magrittr "%>%"
 #'@importFrom purrr modify_if
 #'
@@ -142,7 +142,7 @@ qsort_score <- function(x, qset = names(qsets), item1, subj_id = NULL, group_id 
 
 # invert items and compute scales' scores
         temp_s <- temp_s %>%
-                  dplyr::mutate(item = if_else((scales_inv == 1), (10 - item), as.numeric(item))) %>%
+                  dplyr::mutate(item = dplyr::if_else((scales_inv == 1), (10 - item), as.numeric(item))) %>%
                   dplyr::group_by(scales) %>%
                   dplyr::summarise(sscore = mean(item, na.rm=T)) %>%
                   dplyr::filter(!is.na(scales)) %>%
