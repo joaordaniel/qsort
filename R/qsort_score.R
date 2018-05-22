@@ -30,6 +30,10 @@
 #'
 #'@export
 #'
+#'@importFrom dplyr filter group_by mutate summarise
+#'@importFrom magrittr "%>%"
+#'@importFrom purrr modify_if
+#'
 #'@examples
 #'data_ccq <- qsort_score(ex_qsort$ccq,
 #'                        qset = "ccq",
@@ -138,9 +142,10 @@ qsort_score <- function(x, qset = names(qsets), item1, subj_id = NULL, group_id 
 
 # invert items and compute scales' scores
         temp_s <- temp_s %>%
-                  mutate(item = if_else((scales_inv == 1), (10 - item), as.numeric(item))) %>%
-                  group_by(scales) %>% summarise(sscore = mean(item, na.rm=T)) %>%
-                  filter(!is.na(scales))
+                  dplyr::mutate(item = if_else((scales_inv == 1), (10 - item), as.numeric(item))) %>%
+                  dplyr::group_by(scales) %>%
+                  dplyr::summarise(sscore = mean(item, na.rm=T)) %>%
+                  dplyr::filter(!is.na(scales))
 
 # store each score in a separate column of temp_s2
 # name them accordingly
