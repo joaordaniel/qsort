@@ -68,6 +68,9 @@ qsort_score <- function(x, qset = names(qsets), item1, subj_id = NULL, group_id 
   qsort_length <- c(90, 100, 72, 90)
   names(qsort_length) <- c("aqs", "ccq", "pq", "mbqs")
 
+# assures that x is a data frame
+  x <- as.data.frame(x)
+
 # create a selection vector with column numbers of x qset items
   start_x <- match(item1, (colnames(x)))
   end_x <- start_x + qsort_length[[qset]] - 1
