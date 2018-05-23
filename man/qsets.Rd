@@ -59,9 +59,9 @@
 qsets
 }
 \description{
-A list containing four different datasets: Attachment Q-set (AQS; version
-3.0), California Child Q-set (CCQ); Maternal Behaviour Q-set (MBQS; version
-3.1); and Preschool Q-set (PQ). In these datasets, column names ending in
+A list containing four different datasets: Attachment Q-set (aqs; version
+3.0), California Child Q-set (ccq); Maternal Behaviour Q-set (mbqs; version
+3.1); and Preschool Q-set (pq). In these datasets, column names ending in
 "_c" refer to criteria sorts' scores, while column names ending in "_s" refer
 to scales' scores.
 }
