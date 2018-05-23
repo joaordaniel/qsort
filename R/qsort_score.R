@@ -69,6 +69,8 @@ qsort_score <- function(x, qset = names(qsets), item1, subj_id = NULL, group_id 
   names(qsort_length) <- c("aqs", "ccq", "pq", "mbqs")
 
 # assures that x is a data frame
+# it will turn a tibble back to a data.frame for instance
+  data.frame
   x <- as.data.frame(x)
 
 # create a selection vector with column numbers of x qset items
