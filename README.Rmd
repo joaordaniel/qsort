@@ -8,30 +8,59 @@ output:
 
 # qsort
 
-The qsort package allows the computation of social competence and
-self-esteem scores for California Child Q-set (CCQ; Block and Block, 1969)
-and Preschool Q-set data (PQ; Baumrind, 1968 revised by Wanda Bronson),
-as described in Waters et al. (1985). The package includes a dataset
-with all CCQ and PQ Q-set items and the corresponding criterion scores
-for social competence, self-esteem and social desirability.
+## Overview
 
-The qsort package can be installed from github:
+qsort is package that allows scoring Q-sort data,
+using criteria sorts and derived scales from subsets of items.
+The qsort package includes descriptions and scoring procedures
+for four different Q-sets:  
+Attachment Q-set (version 3.0) (Waters, 1995);  
+California Child Q-set (Block & Block, 1969);  
+Maternal Behaviour Q-set (version 3.1) (Pederson et al., 1999);  
+Preschool Q-set (Baumrind, 1968 revised by Wanda Bronson).  
+
+qsort package includes 3 objects:  
+* `qsort_score()` a function for scoring Q-sort data;  
+* `qsets` a list with four data frames used in qsort_score(),
+containing criterion scores and scales for the referred Q-sets;  
+* `ex_qsort` a list containing four example data frames for the referred Q-sets.  
+
+Access `qsets` help file (`?qsets`) to learn more about
+which criteria sorts and scales included for each Q-set.
+
+## Installation
+
+The qsort package can be installed from GitHub:  
 
 ```{r, eval = F}
-# to install packages from github you first need to install devtools package,
-# if you haven't done so already
+# to install packages from github you first need to install devtools package from CRAN.
+# if you haven't done so already just type
 # install.packages("devtools")
 devtools::install_github("joaordaniel/qsort")
 ```
 
 ## Example
 
-The example bellow shows how to use qsort_score function
-to compute CCQ social competence and self-esteem scores
-from data present in ex_qsort dataset
+The example bellow shows how to use `qsort_score()` function
+to compute scores from California Child Q-sort data,
+present in `ex_qsort` datasets (`ex_qsort$ccq`).  
 
 ```{r example}
 library(qsort)
-data_ccq <- qsort_score(ex_qsort, qset = "ccq", subj_id = "participant", group_id = "classroom")
+data_ccq <- qsort_score(ex_qsort$ccq, qset = "ccq", item1 = "ccq1", subj_id = "participant", group_id = "classroom")
 data_ccq
 ```
+
+Access `qsort_score` help file (`?qsort_score`)
+to learn more about the function's four arguments,
+and `qsets` help file (`?qsets`) to learn more about variables' names.  
+
+## References
+Baumrind, D. (1968). Manual for the Preschool Behaviour Q-set.
+Parental Research Project. Berkeley, CA: Institute of Human Development.  
+Block, J. H., & Block, J. (1969). The California Child Q-Set. Berkeley, CA:
+Institute of Human Development, University of California.  
+Pederson, D. R., Moran, G., & and Bento, S. (1999). Maternal Behaviour
+Q-sort (version 3.1). London, ON: Psychology Department, Western University.  
+Waters, E. (1995). Appendix A: The attachment Q-set (Version 3. 0).
+Monographs of the Society for Research in Child Development, 60, 234-246.  

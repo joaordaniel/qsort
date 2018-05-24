@@ -6,7 +6,8 @@ Author: João R Daniel, David N Sousa
 Maintainer: João R Daniel <joaordaniel@mail.com>
 Description: Computes scores from Q-sort data, using criteria sorts and
   derived scales from subsets of items.
-  qsort package includes datasets for four different Q-sets:
+  The qsort package includes descriptions and scoring procedures
+  for four different Q-sets:
   Attachment Q-set (aqs; version 3.0) (Waters, 1995);
   California Child Q-set (ccq; Block and Block, 1969); 
   Maternal Behaviour Q-set (version 3.1) (mbqs; Pederson et al., 1999);
