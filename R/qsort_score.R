@@ -70,7 +70,6 @@ qsort_score <- function(x, qset = names(qsets), item1, subj_id = NULL, group_id 
 
 # assures that x is a data frame
 # it will turn a tibble back to a data.frame for instance
-  data.frame
   x <- as.data.frame(x)
 
 # create a selection vector with column numbers of x qset items
@@ -140,16 +139,16 @@ qsort_score <- function(x, qset = names(qsets), item1, subj_id = NULL, group_id 
       for(j in 1:length(scales)){
 # match individual profile data with columns indicating scales' items
 # and which items need to be inverted
-        temp_s <- cbind(t(x[i, sel_x]),
+        temp_s <- cbind.data.frame(as.numeric(t(x[i, sel_x])),
                         qsets[[qset]][ , scales[j]],
                         qsets[[qset]][ , scales_inv[j]])
-        names(temp_s) <- c("item", "scales", "scales_inv")
+        names(temp_s) <- c("item_score", "scales", "scales_inv")
 
 # invert items and compute scales' scores
         temp_s <- temp_s %>%
-                  dplyr::mutate(item = dplyr::if_else((scales_inv == 1), (10 - item), as.numeric(item))) %>%
+                  dplyr::mutate(item_score = dplyr::if_else((scales_inv == 1), (10 - item_score), item_score)) %>%
                   dplyr::group_by(scales) %>%
-                  dplyr::summarise(sscore = mean(item, na.rm=T)) %>%
+                  dplyr::summarise(sscore = mean(item_score, na.rm=T)) %>%
                   dplyr::filter(!is.na(scales)) %>%
                   as.data.frame()
 
