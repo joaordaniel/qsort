@@ -5,7 +5,7 @@ qsort
 Overview
 --------
 
-qsort is package that allows scoring Q-sort data, using criteria sorts and derived scales from subsets of items. The qsort package includes descriptions and scoring procedures for four different Q-sets:
+`qsort` is a package that allows scoring Q-sort data, using criteria sorts and derived scales from subsets of items. This package includes descriptions and scoring procedures for four different Q-sets:
 Attachment Q-set (version 3.0) (Waters, 1995);
 California Child Q-set (Block & Block, 1969);
 Maternal Behaviour Q-set (version 3.1) (Pederson et al., 1999);
@@ -13,7 +13,7 @@ Preschool Q-set (Baumrind, 1968 revised by Wanda Bronson).
 
 qsort package includes 3 objects:
 \* `qsort_score()` a function for scoring Q-sort data;
-\* `qsets` a list with four data frames used in qsort\_score(), containing criterion scores and scales for the referred Q-sets;
+\* `qsets` a list with four data frames used in `qsort_score()`, containing criterion scores and scales for the referred Q-sets;
 \* `ex_qsort` a list containing four example data frames for the referred Q-sets.
 
 Access `qsets` help file (`?qsets`) to learn more about which criteria sorts and scales included for each Q-set.
