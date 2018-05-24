@@ -62,7 +62,7 @@ Baumrind, D. (1968). Manual for the Preschool Behaviour Q-set.
  Block, J. H., & Block, J. (1969). The California Child Q-Set. Berkeley, CA:
  Institute of Human Development, University of California.
 
- Pederson, D. R., Moran, G., & and Bento, S. (1999). Maternal Behaviour
+ Pederson, D. R., Moran, G., & Bento, S. (1999). Maternal Behaviour
  Q-sort (version 3.1). London, ON: Psychology Department, Western University.
 
  Waters, E. (1995). Appendix A: The attachment Q-set (Version 3. 0).

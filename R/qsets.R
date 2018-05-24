@@ -81,7 +81,7 @@
 #'   of infant-mother interaction. Monographs of the Society for Research in
 #'   Child Development, 60 (2/3), 111-132.
 #'
-#'   Pederson, D. R., Moran, G., & and Bento, S. (1999). Maternal Behaviour
+#'   Pederson, D. R., Moran, G., & Bento, S. (1999). Maternal Behaviour
 #'   Q-sort (version 3.1). London, ON: Psychology Department, Western
 #'   University.
 #'
