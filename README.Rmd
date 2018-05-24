@@ -27,17 +27,19 @@ qsort package includes 3 objects:
 containing criterion scores and scales for the referred Q-sets;
 * `ex_qsort` a list containing four example data frames for the referred Q-sets.     
 
-Access `qsets` help file (`?qsets`) to learn more about
-which criteria sorts and scales included for each Q-set.
+Read `qsets` help file (`?qsets`) to learn more about
+which criteria sorts and scales are included for each Q-set.
 
 ## Installation
 
-The qsort package can be installed from GitHub:  
+The `qsort` package can be installed from GitHub:  
 
 ```{r, eval = F}
 # to install packages from github you first need to install devtools package from CRAN.
-# if you haven't done so already just type
-# install.packages("devtools")
+# if you haven't installed devtools already just type:
+install.packages("devtools")
+
+# to install qsort from github type:
 devtools::install_github("joaordaniel/qsort")
 ```
 
@@ -62,6 +64,6 @@ Baumrind, D. (1968). Manual for the Preschool Behaviour Q-set.
 Parental Research Project. Berkeley, CA: Institute of Human Development.      
 Block, J. H., & Block, J. (1969). The California Child Q-Set. Berkeley, CA:
 Institute of Human Development, University of California.      
-Pederson, D. R., Moran, G., & and Bento, S. (1999). Maternal Behaviour
+Pederson, D. R., Moran, G., & Bento, S. (1999). Maternal Behaviour
 Q-sort (version 3.1). London, ON: Psychology Department, Western University.    
 Waters, E. (1995). Appendix A: The attachment Q-set (Version 3.0). Monographs of the Society for Research in Child Development, 60, 234-246.     
