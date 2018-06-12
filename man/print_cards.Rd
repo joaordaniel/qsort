@@ -23,7 +23,7 @@ print_cards creates a pdf document in the working directory, with item’s
 descriptions displayed on separate cards.
 }
 \examples{
-print_cards(qset = "aqs", desc_col = "description")
+\dontrun{print_cards(qset = "aqs", desc_col = "description")}
 
 }
 \references{

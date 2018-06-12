@@ -22,7 +22,7 @@
 #' @importFrom cowplot save_plot
 
 #' @examples
-#' print_cards(qset = "aqs", desc_col = "description")
+#' \dontrun{print_cards(qset = "aqs", desc_col = "description")}
 #'
 #'@references Baumrind, D. (1968). Manual for the Preschool Behaviour Q-set.
 #'  Parental Research Project. Berkeley, CA: Institute of Human Development,
