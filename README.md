@@ -1,25 +1,33 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+[![Build
+Status](https://travis-ci.org/joaordaniel/qsort.svg?branch=master)](https://travis-ci.org/joaordaniel/qsort)
+
 qsort
 =====
 
 Overview
 --------
 
-`qsort` is a package that allows scoring Q-sort data, using criteria sorts and derived scales from subsets of items. This package includes descriptions and scoring procedures for four different Q-sets:
+`qsort` is a package that allows scoring Q-sort data, using criteria
+sorts and derived scales from subsets of items. This package includes
+descriptions and scoring procedures for four different Q-sets:
 
 -   Attachment Q-set (version 3.0) (Waters, 1995);
--   California Child Q-set (Block & Block, 1969);
+-   California Child Q-set (Block & Block, 1969);  
 -   Maternal Behaviour Q-set (version 3.1) (Pederson et al., 1999);
 -   Preschool Q-set (Baumrind, 1968 revised by Wanda Bronson).
 
 qsort package includes 4 objects:
 
 -   `qsort_score()` a function for scoring Q-sort data;
--   `qsets` a list with four data frames used in `qsort_score()`, containing criterion scores and scales for the referred Q-sets;
--   `ex_qsort` a list containing four example data frames for the referred Q-sets;
+-   `qsets` a list with four data frames used in `qsort_score()`,
+    containing criterion scores and scales for the referred Q-sets;
+-   `ex_qsort` a list containing four example data frames for the
+    referred Q-sets;
 -   `print_cards()` a function for printing Q-set item cards.
 
-Read `qsets` help file (`?qsets`) to learn more about which criteria sorts and scales are included for each Q-set.
+Read `qsets` help file (`?qsets`) to learn more about which criteria
+sorts and scales are included for each Q-set.
 
 Installation
 ------------
@@ -44,7 +52,9 @@ install.packages("qsort")
 Example
 -------
 
-The example bellow shows how to use `qsort_score()` function to compute scores from California Child Q-sort data, present in `ex_qsort` datasets (`ex_qsort$ccq`).
+The example bellow shows how to use `qsort_score()` function to compute
+scores from California Child Q-sort data, present in `ex_qsort` datasets
+(`ex_qsort$ccq`).
 
 ``` r
 library(qsort)
@@ -75,27 +85,38 @@ data_ccq
     ## 9           -0.069         -0.026            0.004            -0.026
     ## 10          -0.003         -0.019            0.005             0.100
 
-Read `qsort_score` help file (`?qsort_score`) to learn more about the function's four arguments, and `qsets` help file (`?qsets`) to learn more about variables' names.
+Read `qsort_score` help file (`?qsort_score`) to learn more about the
+function’s four arguments, and `qsets` help file (`?qsets`) to learn
+more about variables’ names.
 
 Print cards
 -----------
 
-To print item descriptions in separate cards use `print_cards()` function. The example bellow uses the `print_cards()` function to create a pdf file in the working directory with Attachment Q-set items.
+To print item descriptions in separate cards use `print_cards()`
+function. The example bellow uses the `print_cards()` function to create
+a pdf file in the working directory with Attachment Q-set items.
 
 ``` r
 library(qsort)
 print_cards(qset = "aqs", desc_col = "description")
 ```
 
-Read `print_cards()` help file (`?print_cards`) to learn more about the function's two arguments.
+Read `print_cards()` help file (`?print_cards`) to learn more about the
+function’s two arguments.
 
 References
 ----------
 
-Baumrind, D. (1968). Manual for the Preschool Behaviour Q-set. Parental Research Project. Berkeley, CA: Institute of Human Development.
+Baumrind, D. (1968). Manual for the Preschool Behaviour Q-set. Parental
+Research Project. Berkeley, CA: Institute of Human Development.
 
-Block, J. H., & Block, J. (1969). The California Child Q-Set. Berkeley, CA: Institute of Human Development, University of California.
+Block, J. H., & Block, J. (1969). The California Child Q-Set. Berkeley,
+CA: Institute of Human Development, University of California.
 
-Pederson, D. R., Moran, G., & Bento, S. (1999). Maternal Behaviour Q-sort (version 3.1). London, ON: Psychology Department, Western University.
+Pederson, D. R., Moran, G., & Bento, S. (1999). Maternal Behaviour
+Q-sort (version 3.1). London, ON: Psychology Department, Western
+University.
 
-Waters, E. (1995). Appendix A: The attachment Q-set (Version 3.0). Monographs of the Society for Research in Child Development, 60, 234-246.
+Waters, E. (1995). Appendix A: The attachment Q-set (Version 3.0).
+Monographs of the Society for Research in Child Development, 60,
+234-246.
