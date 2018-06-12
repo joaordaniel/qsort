@@ -1,4 +1,12 @@
 <!-- NEWS.md is generated from NEWS.Rmd. Please edit that file -->
+qsort 0.2.1 (11/06/2018)
+========================
+
+Major Changes
+-------------
+
+-   Added `print_cards()` function for printing Q-set item cards.
+
 qsort 0.2.0 (24/05/2018)
 ========================
 

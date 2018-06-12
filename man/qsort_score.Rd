@@ -4,7 +4,7 @@
 \alias{qsort_score}
 \title{qsort_score}
 \usage{
-qsort_score(x, qset = names(qsets), item1, subj_id = NULL,
+qsort_score(x, qset = names(qsort::qsets), item1, subj_id = NULL,
   group_id = NULL)
 }
 \arguments{

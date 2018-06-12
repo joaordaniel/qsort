@@ -30,9 +30,8 @@
 #'
 #'@export
 #'
-#'@importFrom dplyr if_else filter group_by mutate summarise
-#'@importFrom magrittr "%>%"
 #'@importFrom purrr modify_if
+#'@importFrom stats aggregate.data.frame cor
 #'
 #'@examples
 #'data_ccq <- qsort_score(ex_qsort$ccq,
@@ -63,8 +62,8 @@
 #'  definitions of social competence and self-esteem: Discriminant validity of
 #'  related constructs in theory and data. Developmental Psychology, 21, 508-522.
 
-qsort_score <- function(x, qset = names(qsets), item1, subj_id = NULL, group_id = NULL) {
-# store number of items of each qset
+qsort_score <- function(x, qset = names(qsort::qsets), item1, subj_id = NULL, group_id = NULL) {
+  # store number of items of each qset
   qsort_length <- c(90, 100, 72, 90)
   names(qsort_length) <- c("aqs", "ccq", "pq", "mbqs")
 
@@ -79,15 +78,15 @@ qsort_score <- function(x, qset = names(qsets), item1, subj_id = NULL, group_id 
 
 # identify criteria scores' column(s) in selected qset
 # column names ending in "_c"
-  cscores <- grep("_c$", names(qsets[[qset]]), value = T)
+  cscores <- grep("_c$", names(qsort::qsets[[qset]]), value = T)
 
 # identify scales' column(s) in selected qset
 # column names ending in "_s"
-  scales <- grep("_s$", names(qsets[[qset]]), value = T)
+  scales <- grep("_s$", names(qsort::qsets[[qset]]), value = T)
 
 # identify column(s) detailing items to be inverted for scale computation
 # column names ending in "_inv"
-  scales_inv <- grep("_inv$", names(qsets[[qset]]), value = T)
+  scales_inv <- grep("_inv$", names(qsort::qsets[[qset]]), value = T)
 
 # create an empty data frame to store output values
   qsort_data <- data.frame()
@@ -108,7 +107,7 @@ qsort_score <- function(x, qset = names(qsets), item1, subj_id = NULL, group_id 
 # store correlation values in j number of columns in temp_cs
 # and name them accordingly
         temp_cs[1, j] <- cor(t(x[i, sel_x]),
-                         qsets[[qset]][ , cscores[[j]]],
+                         qsort::qsets[[qset]][ , cscores[[j]]],
                          use = "pairwise.complete.obs")
       }
       names(temp_cs) <- cscores
@@ -123,8 +122,8 @@ qsort_score <- function(x, qset = names(qsets), item1, subj_id = NULL, group_id 
 # and name columns accordingly
           cor_ab <- temp_cs[cscores2[[k]]]
           cor_ac <- temp_cs["sdes_c"]
-          cor_bc <- cor(qsets[[qset]][ , cscores2[[k]]],
-                           qsets[[qset]][ , "sdes_c"],
+          cor_bc <- stats::cor(qsort::qsets[[qset]][ , cscores2[[k]]],
+                           qsort::qsets[[qset]][ , "sdes_c"],
                            use = "pairwise.complete.obs")
 
           temp_cs[1, (length(cscores) + k)] <- (cor_ab - cor_ac * cor_bc) /
@@ -140,17 +139,18 @@ qsort_score <- function(x, qset = names(qsets), item1, subj_id = NULL, group_id 
 # match individual profile data with columns indicating scales' items
 # and which items need to be inverted
         temp_s <- cbind.data.frame(as.numeric(t(x[i, sel_x])),
-                        qsets[[qset]][ , scales[j]],
-                        qsets[[qset]][ , scales_inv[j]])
+                        qsort::qsets[[qset]][ , scales[j]],
+                        qsort::qsets[[qset]][ , scales_inv[j]])
         names(temp_s) <- c("item_score", "scales", "scales_inv")
 
 # invert items and compute scales' scores
-        temp_s <- temp_s %>%
-                  dplyr::mutate(item_score = dplyr::if_else((scales_inv == 1), (10 - item_score), item_score)) %>%
-                  dplyr::group_by(scales) %>%
-                  dplyr::summarise(sscore = mean(item_score, na.rm=T)) %>%
-                  dplyr::filter(!is.na(scales)) %>%
-                  as.data.frame()
+        temp_s$item_score <- ifelse(temp_s$scales_inv == 1,
+                                    10 - temp_s$item_score,
+                                    temp_s$item_score)
+
+        temp_s <- stats::aggregate.data.frame(temp_s$item_score,
+                                       by = list(scales = temp_s$scales),
+                                       FUN = mean, na.rm = T)
 
 # store each score in a separate column of temp_s2
 # name them accordingly
