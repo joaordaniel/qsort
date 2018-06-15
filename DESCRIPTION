@@ -3,7 +3,7 @@ Type: Package
 Title: Scoring Q-sort data
 Version: 0.2.1
 Author: João R Daniel, David N Sousa
-Maintainer: João R Daniel <joaordaniel@mail.com>
+Maintainer: João R Daniel <joaordaniel@gmail.com>
 Description: Computes scores from Q-sort data, using criteria sorts and
   derived scales from subsets of items.
   The qsort package includes descriptions and scoring procedures
