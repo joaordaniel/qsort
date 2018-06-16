@@ -1,6 +1,6 @@
 Package: qsort
 Type: Package
-Title: Scoring Q-sort data
+Title: Scoring Q-Sort Data
 Version: 0.2.1
 Author: João R Daniel, David N Sousa
 Maintainer: João R Daniel <joaordaniel@gmail.com>
