@@ -1,4 +1,4 @@
-### Resubmission addressing reviewer's comments (Swetlana Herbrandt)
+### Resubmission addressing reviewer's comments
 * version numbers of references in the DESCRIPTION file
 do not refer to any type of software output,
 but only to the most current versions of the referred
