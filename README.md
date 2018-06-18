@@ -94,11 +94,12 @@ Print cards
 
 To print item descriptions in separate cards use `print_cards()`
 function. The example bellow uses the `print_cards()` function to create
-a pdf file in the working directory with Attachment Q-set items.
+a pdf file in a user defined directory (e.g., “C:/Users/jd/R/”) with
+Attachment Q-set items.
 
 ``` r
 library(qsort)
-print_cards(qset = "aqs", desc_col = "description")
+print_cards(qset = "aqs", desc_col = "description", dir.print = "C:/Users/jd/R/")
 ```
 
 Read `print_cards()` help file (`?print_cards`) to learn more about the

@@ -10,6 +10,8 @@
 #' @param desc_col Column name of qsets data frame containing item's
 #'   descriptions.
 #'
+#' @param dir.print Directory path where .pdf file will be saved
+#'
 #' @return a pdf document with item’s descriptions displayed on separate cards.
 #'
 #' @export
@@ -22,7 +24,7 @@
 #' @importFrom cowplot save_plot
 
 #' @examples
-#' \dontrun{print_cards(qset = "aqs", desc_col = "description")}
+#' \donttest{print_cards(qset = "aqs", desc_col = "description", dir.print = "C:/Users/jd/R/")}
 #'
 #'@references Baumrind, D. (1968). Manual for the Preschool Behaviour Q-set.
 #'  Parental Research Project. Berkeley, CA: Institute of Human Development,
@@ -31,13 +33,13 @@
 #'  Block, J. H., & Block, J. (1969). The California Child Q-Set. Berkeley, CA:
 #'  Institute of Human Development, University of California.
 #'
-#'  Pederson, D. R., Moran, G., & Bento, S. (1999). Maternal Behaviour
-#'  Q-sort (version 3.1). London, ON: Psychology Department, Western University.
+#'  Pederson, D. R., Moran, G., & Bento, S. (1999). Maternal Behaviour Q-sort
+#'  (version 3.1). London, ON: Psychology Department, Western University.
 #'
 #'  Waters, E. (1995). Appendix A: The attachment Q-set (Version 3. 0).
 #'  Monographs of the Society for Research in Child Development, 60, 234-246.
 
-print_cards <- function(qset, desc_col = "description"){
+print_cards <- function(qset, desc_col = "description", dir.print){
 cards <- list()
 for(i in 1:nrow(qsort::qsets[[qset]])){
 # add item number to item description
@@ -68,7 +70,7 @@ for(i in 1:nrow(qsort::qsets[[qset]])){
 # arrange 9 cards/plots per page
 cards2 <- gridExtra::marrangeGrob(cards, ncol = 3, nrow = 3)
 # save plots in a pdf file in the working directory
-cowplot::save_plot(paste("cards_", qset, ".pdf", sep = ""),
+cowplot::save_plot(filename = paste(dir.print, "cards_", qset, ".pdf", sep = ""),
                    cards2, ncol = 3, nrow = 3,
                    base_height = 2.5, base_width = 3.5)
 }

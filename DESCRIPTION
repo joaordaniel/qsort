@@ -2,16 +2,23 @@ Package: qsort
 Type: Package
 Title: Scoring Q-Sort Data
 Version: 0.2.1
-Author: João R Daniel, David N Sousa
-Maintainer: João R Daniel <joaordaniel@gmail.com>
+Authors@R: c(
+    person("João R", "Daniel", email = "joaordaniel@gmail.com",
+    role = c("aut", "cre"),
+    comment = c(ORCID = "https://orcid.org/0000-0001-6609-2014")),
+    person("David N", "Sousa", email = "davidnsousa@gmail.com", role = "aut"))
 Description: Computes scores from Q-sort data, using criteria sorts and
   derived scales from subsets of items.
   The qsort package includes descriptions and scoring procedures
   for four different Q-sets:
-  Attachment Q-set (aqs; version 3.0) (Waters, 1995);
-  California Child Q-set (ccq; Block and Block, 1969); 
-  Maternal Behaviour Q-set (version 3.1) (mbqs; Pederson et al., 1999);
-  Preschool Q-set (pq; Baumrind, 1968 revised by Wanda Bronson).
+  Attachment Q-set (version 3.0) (Waters, 1995)
+  <doi:10.1111/j.1540-5834.1995.tb00214.x>;
+  California Child Q-set (Block and Block, 1969) 
+  <doi:10.1037/0012-1649.21.3.508>;
+  Maternal Behaviour Q-set (version 3.1) (Pederson et al., 1999)
+  <https://ir.lib.uwo.ca/cgi/viewcontent.cgi?article=1000&context=psychologypub>;
+  Preschool Q-set (Baumrind, 1968 revised by Wanda Bronson)
+  <doi:10.1111/j.1540-5834.1995.tb00214.x>.
 Imports: cowplot,
          ggplot2,
          gridExtra,
@@ -20,7 +27,7 @@ Imports: cowplot,
 Suggests: devtools,
           knitr,
           roxygen2
-License: file LICENSE
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1

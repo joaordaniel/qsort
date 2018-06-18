@@ -4,7 +4,7 @@
 \alias{print_cards}
 \title{print_cards}
 \usage{
-print_cards(qset, desc_col = "description")
+print_cards(qset, desc_col = "description", dir.print)
 }
 \arguments{
 \item{qset}{"aqs" for Attachment Q-set (version 3.0) (Waters, 1995); "ccq"
@@ -14,6 +14,8 @@ Preschool Q-set (Baumrind, 1968 revised by Wanda Bronson).}
 
 \item{desc_col}{Column name of qsets data frame containing item's
 descriptions.}
+
+\item{dir.print}{Directory path where .pdf file will be saved}
 }
 \value{
 a pdf document with item’s descriptions displayed on separate cards.
@@ -23,7 +25,7 @@ print_cards creates a pdf document in the working directory, with item’s
 descriptions displayed on separate cards.
 }
 \examples{
-\dontrun{print_cards(qset = "aqs", desc_col = "description")}
+\donttest{print_cards(qset = "aqs", desc_col = "description", dir.print = "C:/Users/jd/R/")}
 
 }
 \references{
@@ -34,8 +36,8 @@ Baumrind, D. (1968). Manual for the Preschool Behaviour Q-set.
  Block, J. H., & Block, J. (1969). The California Child Q-Set. Berkeley, CA:
  Institute of Human Development, University of California.
 
- Pederson, D. R., Moran, G., & Bento, S. (1999). Maternal Behaviour
- Q-sort (version 3.1). London, ON: Psychology Department, Western University.
+ Pederson, D. R., Moran, G., & Bento, S. (1999). Maternal Behaviour Q-sort
+ (version 3.1). London, ON: Psychology Department, Western University.
 
  Waters, E. (1995). Appendix A: The attachment Q-set (Version 3. 0).
  Monographs of the Society for Research in Child Development, 60, 234-246.
