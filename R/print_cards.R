@@ -1,6 +1,6 @@
 #' print_cards
 #'
-#' print_cards creates a pdf document in the working directory, with item’s
+#' print_cards creates a pdf document in a specified directory, with item’s
 #' descriptions displayed on separate cards.
 #'
 #' @param qset "aqs" for Attachment Q-set (version 3.0) (Waters, 1995); "ccq"
