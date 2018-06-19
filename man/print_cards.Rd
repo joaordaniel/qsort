@@ -25,7 +25,7 @@ print_cards creates a pdf document in the working directory, with item’s
 descriptions displayed on separate cards.
 }
 \examples{
-\donttest{print_cards(qset = "aqs", desc_col = "description", dir.print = dir.print = tempdir())}
+\donttest{print_cards(qset = "aqs", desc_col = "description", dir.print = tempdir())}
 
 }
 \references{
