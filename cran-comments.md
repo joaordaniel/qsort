@@ -4,6 +4,11 @@
 * updated print_cards() function's example as suggested
 print_cards(qset = "aqs", desc_col = "description",
    dir.print = tempdir())
+* after updating this example R CMD check results in a NOTE
+Examples with CPU or elapsed time > 5s
+            user system elapsed
+print_cards 5.47   0.06    5.58
+
 
 
 ### Resubmission addressing reviewer's comments
