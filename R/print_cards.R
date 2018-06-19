@@ -24,7 +24,7 @@
 #' @importFrom cowplot save_plot
 
 #' @examples
-#' \donttest{print_cards(qset = "aqs", desc_col = "description", dir.print = "C:/Users/jd/R/")}
+#' \donttest{print_cards(qset = "aqs", desc_col = "description", dir.print = dir.print = tempdir())}
 #'
 #'@references Baumrind, D. (1968). Manual for the Preschool Behaviour Q-set.
 #'  Parental Research Project. Berkeley, CA: Institute of Human Development,
