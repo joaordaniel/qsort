@@ -1,7 +1,9 @@
 ### Resubmission 2 addressing reviewer's comments
 * DOIs moved inside parentheses
 * single quotes added in the Description field
-* updated print_cards() function as suggested
+* updated print_cards() function's example as suggested
+print_cards(qset = "aqs", desc_col = "description",
+   dir.print = tempdir())
 
 
 ### Resubmission addressing reviewer's comments
