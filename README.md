@@ -1,6 +1,7 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 [![Build
 Status](https://travis-ci.org/joaordaniel/qsort.svg?branch=master)](https://travis-ci.org/joaordaniel/qsort)
+[![DOI](https://zenodo.org/badge/132877059.svg)](https://zenodo.org/badge/latestdoi/132877059)
 
 qsort
 =====
