@@ -6,51 +6,67 @@
 #'refer to criteria sorts' scores, while column names ending in "_s" refer to
 #'scales' scores.
 #'
-#'@format \enumerate{ \item \strong{qsets$aqs} AQS dataset with 90 rows (items)
-#'  and 9 columns. \describe{ \item{item}{Item number from 1 to 90.}
-#'  \item{qset}{aqs. Attachment Q-set (version 3.0) (Waters, 1995).}
-#'  \item{sec_c}{Security criterion scores (retrieved from Waters et al.,
-#'  1995).} \item{dep_c}{Dependency criterion scores (retrieved from Waters et
-#'  al., 1995).} \item{pederson_s}{Pederson & Moran's (1995) scales (retrieved
-#'  from Waters et al., 1995). comp = compliance; sb = secure base, fd =
-#'  fussy/difficult; epc = enjoys physical contact; as = affective sharing.}
-#'  \item{pederson_s_inv}{Items to be inverted in Pederson and Moran scales.}
-#'  \item{posada_s}{Posada et al.'s (1995) scales (retrieved from Waters et al.,
-#'  1995). sim = smooth interactions with mother; pcm = physical contact with
-#'  mother; ioa = interactions with other adults; pm = proximity to mother.}
-#'  \item{posada_s_inv}{Items to be inverted in Posada et al.'s scales.}
-#'  \item{description}{Item description (retrieved from Waters, 1995).} }
+#'@format
+#' \enumerate{
+#'  \item \strong{qsets$aqs} AQS dataset with 90 rows (items)
+#'  and 9 columns.
+#'  \describe{
+#'    \item{item}{Item number from 1 to 90.}
+#'    \item{qset}{aqs. Attachment Q-set (version 3.0) (Waters, 1995).}
+#'    \item{sec_c}{Security criterion scores
+#'    (retrieved from Waters et al., 1995).}
+#'    \item{dep_c}{Dependency criterion scores
+#'    (retrieved from Waters et al., 1995).}
+#'    \item{pederson_s}{Pederson & Moran's (1995) scales
+#'    (retrieved from Waters et al., 1995). comp = compliance; sb = secure base,
+#'    fd = fussy/difficult; epc = enjoys physical contact; as = affective sharing.}
+#'    \item{pederson_s_inv}{Items to be inverted in Pederson and Moran scales.}
+#'    \item{posada_s}{Posada et al.'s (1995) scales (retrieved from Waters et al.,
+#'    1995). sim = smooth interactions with mother; pcm = physical contact with
+#'    mother; ioa = interactions with other adults; pm = proximity to mother.}
+#'    \item{posada_s_inv}{Items to be inverted in Posada et al.'s scales.}
+#'    \item{description}{Item description (retrieved from Waters, 1995).} }
 #'
 #'  \item \strong{qsets$ccq} CCQ dataset with 100 rows (items) and 6 columns.
-#'  \describe{ \item{item}{Item number from 1 to 100.} \item{qset}{ccq.
-#'  California Child Q-set (Block & Block, 1969).} \item{scomp_c}{Social
-#'  competence criterion scores (retrieved from Waters et al., 1985).}
-#'  \item{sest_c}{Self-esteem criterion scores (retrieved from Waters et al.,
-#'  1985).} \item{sest_c}{Self-esteem criterion scores (retrieved from Waters et
-#'  al., 1985).} \item{egores_c}{Ego-resiliency criterion scores (Block & Block,
-#'  1980; retrieved from Brian Vaughn, personal communication).}
-#'  \item{egocont_c}{Ego-control criterion scores (Block & Block, 1980;
-#'  retrieved from Brian Vaughn, personal communication).}
-#'  \item{shields_s}{Emotion regulation scale (retrieved from Shields and
-#'  Cicchetti, 1997)} \item{shields_s_inv}{Items to be inverted in emotion
-#'  regulation scale.} \item{description}{Item description (retrieved from
-#'  Waters et al., 1985).} }
+#'  \describe{
+#'    \item{item}{Item number from 1 to 100.}
+#'    \item{qset}{ccq. California Child Q-set (Block & Block, 1969).}
+#'    \item{scomp_c}{Social competence criterion scores
+#'    (retrieved from Waters et al., 1985).}
+#'    \item{sest_c}{Self-esteem criterion scores
+#'    (retrieved from Waters et al., 1985).}
+#'    \item{sest_c}{Self-esteem criterion scores
+#'    (retrieved from Waters et al., 1985).}
+#'    \item{egores_c}{Ego-resiliency criterion scores (Block & Block, 1980;
+#'    retrieved from Brian Vaughn, personal communication).}
+#'    \item{egocont_c}{Ego-control criterion scores (Block & Block, 1980;
+#'    retrieved from Brian Vaughn, personal communication).}
+#'    \item{shields_s}{Emotion regulation scale
+#'    (retrieved from Shields and Cicchetti, 1997)}
+#'    \item{shields_s_inv}{Items to be inverted in emotion regulation scale.}
+#'    \item{description}{Item description (retrieved from Waters et al., 1985).} }
 #'
 #'  \item \strong{qsets$mbqs} MBQS dataset with 90 rows (items) and 4 columns.
-#'  \describe{ \item{item}{Item number from 1 to 90.} \item{qset}{mbqs. Maternal
-#'  Behaviour Q-set (version 3.1) (Pederson et al., 1999).}
-#'  \item{sens_s}{Sensibility criterion scores (retrieved from Pederson et al.,
-#'  1999).} \item{description}{Item description (retrieved from Pederson et al.,
-#'  1999).} }
+#'  \describe{
+#'    \item{item}{Item number from 1 to 90.}
+#'    \item{qset}{mbqs. Maternal Behaviour Q-set (version 3.1) (Pederson et al., 1999).}
+#'    \item{sens_s}{Sensibility criterion scores
+#'    (retrieved from Pederson et al., 1999).}
+#'    \item{description}{Item description
+#'    (retrieved from Pederson et al., 1999).} }
 #'
 #'  \item \strong{qsets$pq} PQ dataset with 72 rows (items) and 6 columns.
-#'  \describe{ \item{item}{Item number from 1 to 72.} \item{qset}{pq. Preschool
-#'  Q-set (Baumrind, 1968 revised by Wanda Bronson).} \item{scomp_c}{Social
-#'  competence criterion scores (retrieved from Waters et al., 1985).}
-#'  \item{sest_c}{Self-esteem criterion scores (retrieved from Waters et al.,
-#'  1985).} \item{sdes_c}{Social desirability criterion scores (retrieved from
-#'  Waters et al., 1985).} \item{description}{Item description (retrieved from
-#'  Waters et al., 1985).} } }
+#'  \describe{
+#'    \item{item}{Item number from 1 to 72.}
+#'    \item{qset}{pq. Preschool
+#'  Q-set (Baumrind, 1968 revised by Wanda Bronson).}
+#'    \item{scomp_c}{Social competence criterion scores
+#'    (retrieved from Waters et al., 1985).}
+#'    \item{sest_c}{Self-esteem criterion scores
+#'    (retrieved from Waters et al., 1985).}
+#'    \item{sdes_c}{Social desirability criterion scores
+#'    (retrieved from Waters et al., 1985).}
+#'    \item{description}{Item description (retrieved from Waters et al., 1985).} } }
 #'
 #'@references Baumrind, D. (1968). Manual for the Preschool Behaviour Q-set.
 #'  Parental Research Project. Berkeley, CA: Institute of Human Development,
@@ -81,18 +97,18 @@
 #'  children: The development and validation of a new criterion q-sort scale.
 #'  Developmental Psychology, 33, 906-916.
 #'
-#'   Waters, E. (1995). Appendix A: The attachment Q-set (Version 3. 0).
-#'   Monographs of the Society for Research in Child Development, 60 (2/3),
-#'   234-246.
+#'  Waters, E. (1995). Appendix A: The attachment Q-set (Version 3. 0).
+#'  Monographs of the Society for Research in Child Development, 60 (2/3),
+#'  234-246.
 #'
-#'   Waters, E., Vaughn, B. E., Posada, G., & Kondo-Ikemura, K. (1995). Appendix
-#'   D: Scoring key for Q-sort criteria and derived scales in the attachment
-#'   Q-set and the attachment Q-set for infant macaques item sets. Monographs of
-#'   the Society for Research in Child Development, 60 (2/3), 280-282.
+#'  Waters, E., Vaughn, B. E., Posada, G., & Kondo-Ikemura, K. (1995). Appendix
+#'  D: Scoring key for Q-sort criteria and derived scales in the attachment
+#'  Q-set and the attachment Q-set for infant macaques item sets. Monographs of
+#'  the Society for Research in Child Development, 60 (2/3), 280-282.
 #'
-#'   Waters, E., Noyes, D. M., Vaughn, B. E., & Ricks, M. (1985). Q-sort
-#'   definitions of social competence and self-esteem: Discriminant validity of
-#'   related constructs in theory and data. Developmental Psychology, 21,
-#'   508-522.
+#'  Waters, E., Noyes, D. M., Vaughn, B. E., & Ricks, M. (1985). Q-sort
+#'  definitions of social competence and self-esteem: Discriminant validity of
+#'  related constructs in theory and data. Developmental Psychology, 21,
+#'  508-522.
 #'
 "qsets"
