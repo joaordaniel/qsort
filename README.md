@@ -85,6 +85,17 @@ data_ccq
     ## 8           -0.130         -0.068            0.101             0.182
     ## 9           -0.069         -0.026            0.004            -0.026
     ## 10          -0.003         -0.019            0.005             0.100
+    ##    shields_s_emreg
+    ## 1              4.3
+    ## 2              5.9
+    ## 3              5.1
+    ## 4              3.7
+    ## 5              4.4
+    ## 6              5.7
+    ## 7              5.9
+    ## 8              5.9
+    ## 9              5.0
+    ## 10             5.2
 
 Read `qsort_score` help file (`?qsort_score`) to learn more about the
 function’s four arguments, and `qsets` help file (`?qsets`) to learn
