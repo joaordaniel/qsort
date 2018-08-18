@@ -7,7 +7,7 @@ Authors@R: c(
     role = c("aut", "cre"),
     comment = c(ORCID = "https://orcid.org/0000-0001-6609-2014")),
     person("David N", "Sousa", email = "davidnsousa@gmail.com",
-    role = c("aut", "cre"),
+    role = c("aut"),
     comment = c(ORCID = "https://orcid.org/0000-0001-7277-6447")))
 Description: Computes scores from Q-sort data, using criteria sorts and
   derived scales from subsets of items.

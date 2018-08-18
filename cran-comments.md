@@ -1,6 +1,5 @@
 ### Update package 2018-08-12 - qsort 0.2.2
 * added Shields and Cicchetti’s (1997) emotion regulation scale to qsets$ccq
-* added "cre" to the role of co-author David N. Sousa in the DESCRIPTION file
 * added ORCID number of co-author David N. Sousa in the DESCRIPTION file
 
 ### Resubmission 2 addressing reviewer's comments
