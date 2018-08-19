@@ -7,3 +7,5 @@
 ^cran-comments\.md$
 ^\.travis\.yml$
 ^LICENSE
+^paper.md
+^paper.bib
