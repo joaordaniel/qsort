@@ -8,13 +8,13 @@
 #'  items' scores should be ordered sequentially from left to right, starting
 #'  with item 1.
 #'
-#'@param qset "aqs" for Attachment Q-set (version 3.0) (Waters, 1995); "ccq" for
-#'  California Child Q-set (Block & Block, 1969); "mbqs" for Maternal
-#'  Behaviour Q-set (version 3.1) (Pederson et al., 1999); and "pq" for
-#'  Preschool Q-set (Baumrind, 1968 revised by Wanda Bronson).
+#'@param qset A data frame containing Q-set criterion scores and derived scales.
+#'  For details see for example ?qset_aqs, ?qset_cqq, ?qset_mbqs and ?qset_pq.
 #'@param item1 Column name of x containing item 1 score
 #'@param subj_id Optional. Column name of x with subjects' identification codes.
 #'@param group_id Optional. Column name of x with groups' identification codes.
+#'
+#'@param qsort_length The number of items in the qsort.
 #'
 #'@return qsort_score function returns a data frame. This data frame will have a
 #'  varying number of columns depending on the number of available criteria
@@ -35,15 +35,17 @@
 #'
 #'@examples
 #'data_ccq <- qsort_score(ex_qsort$ccq,
-#'                        qset = "ccq",
+#'                        qset_ccq,
 #'                        item1 = "ccq1",
 #'                        subj_id = "participant",
-#'                        group_id = "classroom")
+#'                        group_id = "classroom",
+#'                        qsort_length = 100)
 #'data_ccq
 #'
 #'data_aqs <- qsort_score(ex_qsort$aqs,
-#'                        qset = "aqs",
-#'                        item1 = "aqs1")
+#'                        qset_aqs,
+#'                        item1 = "aqs1",
+#'                        qsort_length = 90)
 #'
 #'@references Baumrind, D. (1968). Manual for the Preschool Behaviour Q-set.
 #'  Parental Research Project. Berkeley, CA: Institute of Human Development,
@@ -62,10 +64,7 @@
 #'  definitions of social competence and self-esteem: Discriminant validity of
 #'  related constructs in theory and data. Developmental Psychology, 21, 508-522.
 
-qsort_score <- function(x, qset = names(qsort::qsets), item1, subj_id = NULL, group_id = NULL) {
-  # store number of items of each qset
-  qsort_length <- c(90, 100, 72, 90)
-  names(qsort_length) <- c("aqs", "ccq", "pq", "mbqs")
+qsort_score <- function(x, qset, item1, subj_id = NULL, group_id = NULL, qsort_length) {
 
 # assures that x is a data frame
 # it will turn a tibble back to a data.frame for instance
@@ -73,20 +72,20 @@ qsort_score <- function(x, qset = names(qsort::qsets), item1, subj_id = NULL, gr
 
 # create a selection vector with column numbers of x qset items
   start_x <- match(item1, (colnames(x)))
-  end_x <- start_x + qsort_length[[qset]] - 1
+  end_x <- start_x + qsort_length - 1
   sel_x <- start_x : end_x
 
 # identify criteria scores' column(s) in selected qset
 # column names ending in "_c"
-  cscores <- grep("_c$", names(qsort::qsets[[qset]]), value = T)
+  cscores <- grep("_c$", names(qset), value = T)
 
 # identify scales' column(s) in selected qset
 # column names ending in "_s"
-  scales <- grep("_s$", names(qsort::qsets[[qset]]), value = T)
+  scales <- grep("_s$", names(qset), value = T)
 
 # identify column(s) detailing items to be inverted for scale computation
 # column names ending in "_inv"
-  scales_inv <- grep("_inv$", names(qsort::qsets[[qset]]), value = T)
+  scales_inv <- grep("_inv$", names(qset), value = T)
 
 # create an empty data frame to store output values
   qsort_data <- data.frame()
@@ -94,8 +93,8 @@ qsort_score <- function(x, qset = names(qsort::qsets), item1, subj_id = NULL, gr
   for(i in 1:nrow(x)){
 # for all rows/cases in x
 # first create empty data frames to store temporary values used in the computations below
-    temp_id <- cbind.data.frame(qset, x[i, subj_id], x[i, group_id])
-    names(temp_id) <- c("qset", subj_id, group_id)
+    temp_id <- cbind.data.frame(x[i, subj_id], x[i, group_id])
+    names(temp_id) <- c(subj_id, group_id)
     temp_cs <- data.frame()[1, ]
     temp_s <- data.frame()[1,]
     temp_s3 <- data.frame()[1, ]
@@ -107,7 +106,7 @@ qsort_score <- function(x, qset = names(qsort::qsets), item1, subj_id = NULL, gr
 # store correlation values in j number of columns in temp_cs
 # and name them accordingly
         temp_cs[1, j] <- cor(t(x[i, sel_x]),
-                         qsort::qsets[[qset]][ , cscores[[j]]],
+                         qset[ , cscores[[j]]],
                          use = "pairwise.complete.obs")
       }
       names(temp_cs) <- cscores
@@ -122,8 +121,8 @@ qsort_score <- function(x, qset = names(qsort::qsets), item1, subj_id = NULL, gr
 # and name columns accordingly
           cor_ab <- temp_cs[cscores2[[k]]]
           cor_ac <- temp_cs["sdes_c"]
-          cor_bc <- stats::cor(qsort::qsets[[qset]][ , cscores2[[k]]],
-                           qsort::qsets[[qset]][ , "sdes_c"],
+          cor_bc <- stats::cor(qset[ , cscores2[[k]]],
+                               qset[ , "sdes_c"],
                            use = "pairwise.complete.obs")
 
           temp_cs[1, (length(cscores) + k)] <- (cor_ab - cor_ac * cor_bc) /
@@ -139,8 +138,8 @@ qsort_score <- function(x, qset = names(qsort::qsets), item1, subj_id = NULL, gr
 # match individual profile data with columns indicating scales' items
 # and which items need to be inverted
         temp_s <- cbind.data.frame(as.numeric(t(x[i, sel_x])),
-                        qsort::qsets[[qset]][ , scales[j]],
-                        qsort::qsets[[qset]][ , scales_inv[j]])
+                                   qset[ , scales[j]],
+                                   qset[ , scales_inv[j]])
         names(temp_s) <- c("item_score", "scales", "scales_inv")
 
 # invert items and compute scales' scores

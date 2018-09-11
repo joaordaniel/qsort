@@ -3,10 +3,8 @@
 #' print_cards creates a pdf document in a specified directory, with item’s
 #' descriptions displayed on separate cards.
 #'
-#' @param qset "aqs" for Attachment Q-set (version 3.0) (Waters, 1995); "ccq"
-#'   for California Child Q-set (Block & Block, 1969); "mbqs" for Maternal
-#'   Behaviour Q-set (version 3.1) (Pederson et al., 1999); and "pq" for
-#'   Preschool Q-set (Baumrind, 1968 revised by Wanda Bronson).
+#' @param qset A data frame containing the Q-set item's descriptions.
+#'  For details see for example ?qset_aqs, ?qset_cqq, ?qset_mbqs and ?qset_pq.
 #' @param desc_col Column name of qsets data frame containing item's
 #'   descriptions.
 #'
@@ -24,7 +22,7 @@
 #' @importFrom cowplot save_plot
 
 #' @examples
-#' \donttest{print_cards(qset = "aqs", desc_col = "description", dir.print = tempdir())}
+#' \donttest{print_cards(qset_aqs, desc_col = "description", dir.print = tempdir())}
 #'
 #'@references Baumrind, D. (1968). Manual for the Preschool Behaviour Q-set.
 #'  Parental Research Project. Berkeley, CA: Institute of Human Development,
@@ -41,10 +39,10 @@
 
 print_cards <- function(qset, desc_col = "description", dir.print){
 cards <- list()
-for(i in 1:nrow(qsort::qsets[[qset]])){
+for(i in 1:nrow(qset)){
 # add item number to item description
     item_desc <- paste(i,
-                     qsort::qsets[[qset]][[desc_col]][[i]],
+                     qset[[desc_col]][[i]],
                      sep=". ")
 # break item description in 40 characters' sentences
   item_desc_wrap <- strwrap(item_desc, width = 40)
@@ -70,7 +68,7 @@ for(i in 1:nrow(qsort::qsets[[qset]])){
 # arrange 9 cards/plots per page
 cards2 <- gridExtra::marrangeGrob(cards, ncol = 3, nrow = 3)
 # save plots in a pdf file in the working directory
-cowplot::save_plot(filename = paste(dir.print, "cards_", qset, ".pdf", sep = ""),
+cowplot::save_plot(filename = paste(dir.print, "cards_", deparse(substitute(qset)), ".pdf", sep = ""),
                    cards2, ncol = 3, nrow = 3,
                    base_height = 2.5, base_width = 3.5)
 }

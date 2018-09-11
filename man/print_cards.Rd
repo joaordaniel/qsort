@@ -7,10 +7,8 @@
 print_cards(qset, desc_col = "description", dir.print)
 }
 \arguments{
-\item{qset}{"aqs" for Attachment Q-set (version 3.0) (Waters, 1995); "ccq"
-for California Child Q-set (Block & Block, 1969); "mbqs" for Maternal
-Behaviour Q-set (version 3.1) (Pederson et al., 1999); and "pq" for
-Preschool Q-set (Baumrind, 1968 revised by Wanda Bronson).}
+\item{qset}{A data frame containing the Q-set item's descriptions.
+For details see for example ?qset_aqs, ?qset_cqq, ?qset_mbqs and ?qset_pq.}
 
 \item{desc_col}{Column name of qsets data frame containing item's
 descriptions.}
@@ -25,7 +23,7 @@ print_cards creates a pdf document in a specified directory, with item’s
 descriptions displayed on separate cards.
 }
 \examples{
-\donttest{print_cards(qset = "aqs", desc_col = "description", dir.print = tempdir())}
+\donttest{print_cards(qset_aqs, desc_col = "description", dir.print = tempdir())}
 
 }
 \references{
