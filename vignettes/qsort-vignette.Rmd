@@ -7,9 +7,7 @@ date: "`r Sys.Date()`"
 abstract: |
   The use of Q-sets to describe subjective views on a specific research domain, in a way suitable for quantitative data analysis, has a long tradition in psychological research. Generally, Q-sets consist of a large set of items- usually sentences printed on separate cards- that describe personality and behavioural characteristics. These items are sorted into a different number of numerical categories (e.g., 9) based on their salience as descriptors of an individual (e.g., 1- most uncharacteristic to 9- most characteristic). An individual Q-sort (i.e., the scores of all items descriptive of an individual) can then be compared (correlated) with criteria Q-sorts (description of a hypothetical person at the extreme high end of a domain) to index a score for a particular domain. Also, subsets of items can be averaged to derive a scale score. In this paper we present an \proglang{R} package that computes scores from criteria Q-sorts and item scales.
 bibliography: bib-vignette.bib
-output:
-  html_document:
-    keep_md: yes
+output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{qsort R package: A Tool for Scoring Q-sort Data
   %\VignetteEngine{knitr::rmarkdown}
@@ -135,7 +133,7 @@ with 10 rows each (i.e., 10 participants) and a varying number of columns depend
 
 The `qsort_score` function uses the criteria scores and/or scales from Q-set datasets to compute scores for Q-sort data. This function takes five arguments:
 ``` {r, eval = F}
-  qsort_score(x, qset, item1, subj_id = NULL,  group_id = NULL, qsort_length)
+  qsort_score(x, qset, qsort_length, item1, subj_id = NULL,  group_id = NULL)
 ```
 where `x` is a data frame in wide format containing the data to be analysed: each participant in one row, with scores for Q-set items in different columns, ordered sequentially from the first item (e.g., `ccq1` as in `ex_qsort$ccq`) to the last (e.g., `ccq100` as in `ex_qsort$ccq`), with no other columns in between.
 
@@ -145,14 +143,16 @@ The second argument of the `qsort_score` function takes a Q-set data frame such 
 
 The third argument, `item1`, must correspond to the name of the column in `x` that contains the scores of the first item of the selected Q-set. R is case sensitive, so you need to type the exact name of this column. `item1` is a character vector and should be in quotes.
 
-The arguments `subj_id` and `group_id` of the`qsort_score` function have a default value of NULL and do not have to be mandatorily specified (the function will compute scores either way). We included them in the function if users want the output data frame of the `qsort_score` function to include a subjects' identification variable (e.g., participant as in `ex_qsort`) and/or a groups' identification variable (e.g., classroom as in `ex_qsort`). Again, names passed into these arguments should correspond exactly to column/variable names in data frame `x`. These identification variables can be particularly handy if you later want to merge/join different datasets together - join functions of the dplyr package [@Wickham2018] are quite useful for this (see for example @wickham2017data, pp. 178 onwards for further details; or http://r4ds.had.co.nz/relational-data.html#outer-join for an online version of the same text). The last argument `qsort_length` must be used to specify the number of items in the qsort. The help function of R package qsort lists the details of `qsort_score` function: see `?qsort_score`.
+The argument `qsort_length` must be used to specify the number of items in the qsort.
+
+The arguments `subj_id` and `group_id` of the`qsort_score` function have a default value of NULL and do not have to be mandatorily specified (the function will compute scores either way). We included them in the function if users want the output data frame of the `qsort_score` function to include a subjects' identification variable (e.g., participant as in `ex_qsort`) and/or a groups' identification variable (e.g., classroom as in `ex_qsort`). Again, names passed into these arguments should correspond exactly to column/variable names in data frame `x`. These identification variables can be particularly handy if you later want to merge/join different datasets together - join functions of the dplyr package [@Wickham2018] are quite useful for this (see for example @wickham2017data, pp. 178 onwards for further details; or http://r4ds.had.co.nz/relational-data.html#outer-join for an online version of the same text). The help function of R package qsort lists the details of `qsort_score` function: see `?qsort_score`.
 
 #### Example 1
 
 The following applies the `qsort_score` function to `ex_qsort$ccq` and stores the output data frame in `data_ccq`:
 
 ```{r, eval = T}
-data_ccq <- qsort_score(x = ex_qsort$ccq, qset_ccq, item1 = "ccq1", subj_id = "participant", group_id = "classroom", qsort_length = 100)
+data_ccq <- qsort_score(x = ex_qsort$ccq, qset_ccq, qsort_length = 100, item1 = "ccq1", subj_id = "participant", group_id = "classroom")
 data_ccq
 ```
 
@@ -172,7 +172,7 @@ The Q-set data frame objects `qset_ccq` and `qset_pq` include social desirabilit
 The following applies the `qsort_score` function to `ex_qsort$aqs`, and stores the output data frame in `data_aqs`:
 
 ```{r, eval = T}
-data_aqs <- qsort_score(x = ex_qsort$aqs, qset_aqs, item1 = "aqs1", qsort_length = 90)
+data_aqs <- qsort_score(x = ex_qsort$aqs, qset_aqs, qsort_length = 90, item1 = "aqs1")
 data_aqs
 ```
 

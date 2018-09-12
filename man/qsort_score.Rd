@@ -4,7 +4,7 @@
 \alias{qsort_score}
 \title{qsort_score}
 \usage{
-qsort_score(x, qset, item1, subj_id = NULL, group_id = NULL, qsort_length)
+qsort_score(x, qset, qsort_length, item1, subj_id = NULL, group_id = NULL)
 }
 \arguments{
 \item{x}{data frame. x should be in wide format, with each subject data in one
@@ -12,16 +12,16 @@ row and the scores for qset items in different columns. Columns for qset
 items' scores should be ordered sequentially from left to right, starting
 with item 1.}
 
-\item{qset}{A data frame containing Q-set criterion scores and derived scales.
+\item{qset}{A data frame containing Q-set criterion scores and / or derived scales.
 For details see for example ?qset_aqs, ?qset_cqq, ?qset_mbqs and ?qset_pq.}
+
+\item{qsort_length}{The number of items in the qsort.}
 
 \item{item1}{Column name of x containing item 1 score}
 
 \item{subj_id}{Optional. Column name of x with subjects' identification codes.}
 
 \item{group_id}{Optional. Column name of x with groups' identification codes.}
-
-\item{qsort_length}{The number of items in the qsort.}
 }
 \value{
 qsort_score function returns a data frame. This data frame will have a
@@ -43,16 +43,16 @@ from scales created from subsets of items.
 \examples{
 data_ccq <- qsort_score(ex_qsort$ccq,
                        qset_ccq,
+                       qsort_length = 100,
                        item1 = "ccq1",
                        subj_id = "participant",
-                       group_id = "classroom",
-                       qsort_length = 100)
+                       group_id = "classroom")
 data_ccq
 
 data_aqs <- qsort_score(ex_qsort$aqs,
                        qset_aqs,
-                       item1 = "aqs1",
-                       qsort_length = 90)
+                       qsort_length = 90,
+                       item1 = "aqs1")
 
 }
 \references{

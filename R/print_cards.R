@@ -3,9 +3,9 @@
 #' print_cards creates a pdf document in a specified directory, with item’s
 #' descriptions displayed on separate cards.
 #'
-#' @param qset A data frame containing the Q-set item's descriptions.
+#' @param qset A data frame containing the Q-set items' descriptions.
 #'  For details see for example ?qset_aqs, ?qset_cqq, ?qset_mbqs and ?qset_pq.
-#' @param desc_col Column name of qsets data frame containing item's
+#' @param desc_col Column name of qsets data frame containing items'
 #'   descriptions.
 #'
 #' @param dir.print Directory path where .pdf file will be saved

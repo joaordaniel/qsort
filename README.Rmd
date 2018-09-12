@@ -26,17 +26,15 @@ for four different Q-sets:
 qsort package includes 7 objects:
 
 * `qsort_score()` a function for scoring Q-sort data;
+* `ex_qsort` a list containing four example data frames for the referred Q-sets;
+* `print_cards()` a function for printing Q-set item cards.
 * `qset_aqs` a data frame containing the Attachment Q-set (aqs; version 3.0);
 * `qset_ccq` a data frame containing the California Child Q-set (ccq);
 * `qset_mbqs` a data frame containing the Maternal Behaviour Q-set (mbqs; version 3.1);
 * `qset_pq` a data frame containing the Preschool Q-set (pq);
-* `ex_qsort` a list containing four example data frames for the referred Q-sets;
-* `print_cards()` a function for printing Q-set item cards.
 
 Read the documentation (with `?qset_aqs`, `?qset_ccq`, `?qset_mbqs` and `?qset_pq`) to learn more about
 which criteria sorts and scales are included for each Q-set. Or click the R documentation badge at the top of this page.
-
-[An extended version of this tutorial can be found here](vignettes/qsort-vignette.md)
 
 ## Installation
 
@@ -64,7 +62,7 @@ present in `ex_qsort` datasets (`ex_qsort$ccq`).
 
 ```{r, eval = TRUE, echo = TRUE}
 library(qsort)
-data_ccq <- qsort_score(ex_qsort$ccq, qset_ccq, item1 = "ccq1", subj_id = "participant", group_id = "classroom", qsort_length = 100)
+data_ccq <- qsort_score(ex_qsort$ccq, qset_ccq, qsort_length = 100, item1 = "ccq1", subj_id = "participant", group_id = "classroom")
 data_ccq
 ```
 

@@ -7,10 +7,10 @@
 print_cards(qset, desc_col = "description", dir.print)
 }
 \arguments{
-\item{qset}{A data frame containing the Q-set item's descriptions.
+\item{qset}{A data frame containing the Q-set items' descriptions.
 For details see for example ?qset_aqs, ?qset_cqq, ?qset_mbqs and ?qset_pq.}
 
-\item{desc_col}{Column name of qsets data frame containing item's
+\item{desc_col}{Column name of qsets data frame containing items'
 descriptions.}
 
 \item{dir.print}{Directory path where .pdf file will be saved}

@@ -8,7 +8,7 @@
 #'  items' scores should be ordered sequentially from left to right, starting
 #'  with item 1.
 #'
-#'@param qset A data frame containing Q-set criterion scores and derived scales.
+#'@param qset A data frame containing Q-set criterion scores and / or derived scales.
 #'  For details see for example ?qset_aqs, ?qset_cqq, ?qset_mbqs and ?qset_pq.
 #'@param item1 Column name of x containing item 1 score
 #'@param subj_id Optional. Column name of x with subjects' identification codes.
@@ -36,16 +36,16 @@
 #'@examples
 #'data_ccq <- qsort_score(ex_qsort$ccq,
 #'                        qset_ccq,
+#'                        qsort_length = 100,
 #'                        item1 = "ccq1",
 #'                        subj_id = "participant",
-#'                        group_id = "classroom",
-#'                        qsort_length = 100)
+#'                        group_id = "classroom")
 #'data_ccq
 #'
 #'data_aqs <- qsort_score(ex_qsort$aqs,
 #'                        qset_aqs,
-#'                        item1 = "aqs1",
-#'                        qsort_length = 90)
+#'                        qsort_length = 90,
+#'                        item1 = "aqs1")
 #'
 #'@references Baumrind, D. (1968). Manual for the Preschool Behaviour Q-set.
 #'  Parental Research Project. Berkeley, CA: Institute of Human Development,
@@ -64,7 +64,7 @@
 #'  definitions of social competence and self-esteem: Discriminant validity of
 #'  related constructs in theory and data. Developmental Psychology, 21, 508-522.
 
-qsort_score <- function(x, qset, item1, subj_id = NULL, group_id = NULL, qsort_length) {
+qsort_score <- function(x, qset, qsort_length, item1, subj_id = NULL, group_id = NULL) {
 
 # assures that x is a data frame
 # it will turn a tibble back to a data.frame for instance
