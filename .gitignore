@@ -9,3 +9,4 @@ NEWS.Rmd
 README.Rmd
 LICENSE
 cran-comments.md
+inst/doc

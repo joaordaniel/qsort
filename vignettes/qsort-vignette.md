@@ -1,0 +1,301 @@
+---
+title: "qsort R package: A Tool for Scoring Q-sort Data"
+author:
+- "João R. Daniel"
+- "David N. Sousa"
+date: "2018-09-12"
+abstract: |
+  The use of Q-sets to describe subjective views on a specific research domain, in a way suitable for quantitative data analysis, has a long tradition in psychological research. Generally, Q-sets consist of a large set of items- usually sentences printed on separate cards- that describe personality and behavioural characteristics. These items are sorted into a different number of numerical categories (e.g., 9) based on their salience as descriptors of an individual (e.g., 1- most uncharacteristic to 9- most characteristic). An individual Q-sort (i.e., the scores of all items descriptive of an individual) can then be compared (correlated) with criteria Q-sorts (description of a hypothetical person at the extreme high end of a domain) to index a score for a particular domain. Also, subsets of items can be averaged to derive a scale score. In this paper we present an \proglang{R} package that computes scores from criteria Q-sorts and item scales.
+bibliography: bib-vignette.bib
+output:
+  html_document:
+    keep_md: yes
+vignette: >
+  %\VignetteIndexEntry{qsort R package: A Tool for Scoring Q-sort Data
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+
+## Introduction
+
+This paper presents a tutorial for an R package qsort to analyse Q-sort data. R [@r2018] is a free software environment for statistical computing (https://cloud.r-project.org/), and R packages are collections of functions and datasets developed by the R community that extend base R functionalities. Due to its open access philosophy, R packages are an important tool for reproducible research. Bellow we describe how to install this package and how to use it to score Q-sort data. For the moment, the qsort package includes descriptions and scoring procedures for four different Q-sets: Attachment Q-set (version 3.0) [@Waters1995a], California Child Q-set [@Block1969], Maternal Behaviour Q-set (version 3.1) [@Pederson1999], and Preschool Q-set (@Baumrind1968, revised by Wanda Bronson). These Q-sets have been used extensively in psychological research and a quick search on google scholar shows that in the past five years these references have been cited 500 plus times. Nevertheless, the core function and datasets of this package can be easily updated to accommodate additional Q-sets. If readers of this paper would like to provide additional Q-set descriptions and scoring procedures, please feel free to contact the authors of qsort. We will gladly update the package to expand its capabilities.
+
+## A Brief Summary of Q-sort Methodology
+  
+  Q-sets are instruments, consisting of a comprehensive large set of items (e.g., sentences, images, photos), used to describe subjective views on a specific research domain in a way suitable for quantitative data analysis [@Block1961; @John2014; @Vaughn2014]. In psychological research a broad range of different Q-sets abound. Their items are usually sentences, printed on separate cards, describing personality and behavioural characteristics. For instance, the California Child Q-set [@Block1969] is a 100 items Q-set that includes descriptions such as: "Is curious and exploring, eager for new experiences" (item 40), "Appears to have a high intellectual capacity" (item 68), or "Has an active fantasy life" (item 97).
+  
+## Computing Scores from Q-sort Data
+
+The scoring procedure of Q-set items, usually referred to as Q-sorting, consists of rank ordering items into categories/piles based on their salience as descriptors of an individual. Q-sorting can be done by participants to describe themselves, or by observers who describe the personality and behaviour of others. The number of piles/categories and the number of cards in each pile is typically required to conform to a specific distribution (e.g., quasi-normal, rectangular). Forcing a distribution reduces response biases and makes Q-sorting an ipsative procedure [@Block1961]; that is, observers have to compare the salience of the different items relative to each other- contrasting, for instance, with Likert type scales where all items can hypothetically receive the same score.
+
+For example, in a 9-category sort of a Q-set with 90 items: (a) least characteristic items for a specific participant would be included in categories 1 to 3 (e.g., most uncharacteristic, very uncharacteristic, and uncharacteristic of participant respectively) and score 1 to 3 accordingly; (b) characteristic items would score 7, 8 or 9 (e.g., moderately characteristic, very characteristic, most characteristic); (c) while low salience items would score 4, 5 or 6 (e.g., somewhat uncharacteristic, neither characteristic nor uncharacteristic, somewhat characteristic). If the sort of a 90 items Q-set follows a rectangular distribution, all the categories from 1 to 9 should include 10 items (i.e., 10 items score 1, 10 items score 2, etc.); if the sort follows a quasi-normal distribution, the distribution of items could be as follows: 4, 7, 10, 15, 18, 15, 10, 7, 4 in categories 1 to 9 respectively (i.e., 4 items score 1, 7 items score 2, etc.). [@Vaughn2014] (p. 179-180) present a series of figures that illustrate nicely sorting distributions and the sorting process.
+
+## Criterion sorts
+
+[@Block1980] introduced the use of criterion Q-sorts to compute individual scores for specific psychological domains. To construct a criterion Q-sort, experts in a domain are instructed to sort all Q-set items according to a fixed distribution, having in mind a hypothetical person at the extreme high end of that domain (e.g., the most social competent children). Expert Q-sorts are then aggregated and each item receives a criterion score that corresponds to the average score of all experts. Consequently, (a) items with the lowest criterion scores correspond to personality and behavioural characteristics that are more negatively related with the domain, (b) items with the highest criterion scores correspond to characteristics that are more positively related with the domain, and (c) items in the middle of the distribution are minimally related with the domain. Following [@Block1980], an individual's score on a domain corresponds to the Pearson correlation between her or his Q-sort description and the criterion Q-sort of that domain.
+
+## Scales created from subsets of items
+
+Alternatively to correlating individual Q-sorts with criterion Q-sorts, one may compute scores for scales created from subsets of Q-set items. Usually these scales are designed by grouping items that correlate strongly with some outcome variable, and scale scores correspond to the average of those items' scores (inverting items stated negatively when needed).
+
+## R qsort Package
+
+qsort is a package that allows scoring Q-sort data, using criteria sorts and derived scales from subsets of items. This package includes descriptions and scoring procedures for four different Q-sets:
+
+- Attachment Q-set (version 3.0) [@Waters1995a];
+- California Child Q-set [@Block1969];      
+- Maternal Behaviour Q-set (version 3.1) [@Pederson1999];
+- Preschool Q-set (@Baumrind1968, revised by Wanda Bronson).  
+
+The R package qsort is available at https://CRAN.R-project.org/. It can be installed and loaded as follows:
+
+
+```r
+install.packages("qsort")
+library(qsort)
+```
+The R package qsort is also available at https://github.com/joaordaniel/qsort.
+
+qsort package includes 7 objects:
+
+- `qsort_score()` a function for scoring Q-sort data;
+- `ex_qsort` a list containing four example data frames for the referred Q-sets;
+- `print_cards()` a function for printing Q-set item cards.
+- `qset_aqs` a data frame containing the Attachment Q-set (aqs; version 3.0);
+- `qset_ccq` a data frame containing the California Child Q-set (ccq);
+- `qset_mbqs` a data frame containing the Maternal Behaviour Q-set (mbqs; version 3.1);
+- `qset_pq` a data frame containing the Preschool Q-set (pq);
+
+### The Q-set objects
+
+Each data frame object starting with `qset_` contains data specific of a certain Q-set, including items' descriptions. For example:
+
+
+```r
+head(qset_ccq)
+#>   item scomp_c sest_c egores_c egocont_c sdes_c shields_s shields_s_inv
+#> 1    1     4.0    4.0      3.0       5.3    4.4      <NA>             0
+#> 2    2     7.0    6.6      7.0       3.3    7.6      <NA>             0
+#> 3    3     7.1    7.6      7.7       6.7    7.7     emreg             0
+#> 4    4     8.4    6.7      7.0       4.0    8.0      <NA>             0
+#> 5    5     8.9    7.9      6.3       3.7    6.4      <NA>             0
+#> 6    6     8.3    6.3      6.3       3.7    7.9      <NA>             0
+#>                                    description
+#> 1  Prefers nonverbal methods of communication.
+#> 2            Is considerate of other children.
+#> 3                      Is warm and responsive.
+#> 4         Gets along well with other children.
+#> 5 Is admired and sought out by other children.
+#> 6                  Is helpful and cooperative.
+```
+
+Each of these datasets (`qset_aqs`, `qset_ccq`, `qset_mbqs`, `qset_pq`) includes: 
+
+1. a column with item numbers (first column, named `item`);
+2. a column with item description (last column, named `description`);
+3. a variable number of columns according to available criteria sorts and scales. 
+
+In these datasets, column names ending in `_c` refer to criteria sorts, while column names ending in `_s` refer to scales. When scales exist, column names ending in `_inv` indicate items' scores to be inverted. All criteria scores in the datasets are scored from 1 to 9, with lower (higher) scores corresponding to characteristics negatively (positively) related with the domain being evaluated.
+
+Besides the `item`, and `description` columns, the `qset_aqs` data frame includes: 
+
+1. security criterion scores (`sec_c`);
+2. dependency criterion scores (`dep_c`);
+3. @Pederson1995 scales (`pederson_s`; comp- compliance, sb- secure base, fd- fussy/difficult, epc- enjoys physical contact, as- affective sharing);
+4. @Posada1995 scales (`posada_s`; sim- smooth interactions with mother, pcm- physical contact with mother, ioa- interactions with other adults, pm- proximity to mother).
+
+The `qset_ccq` data frame includes scores of five criteria Q-sorts:
+
+1. social competence criterion scores (`scomp_c`);
+2. self-esteem criterion scores (`sest_c`);
+3. ego-resiliency criterion scores (`egores_c`)
+4. ego-control criterion scores (`egocont_c`);
+5. social desirability criterion scores (`sdes_c`). 
+
+The data for this dataset was retrieved from @Waters1985 and from Brian Vaughn (personal communication; ego-resiliency and ego-control criteria scores).
+
+The `qset_mbqs` data frame  includes scores of one criterion Q-sort:
+
+1. sensibility criterion scores (`sens_c`). 
+
+The data for this dataset was retrieved from @Pederson1999.
+
+Finally the `qset_pq` data frame  includes scores of three criteria Q-sorts:
+
+1. social competence (`scomp_c`);
+2. self-esteem (`sest_c`);
+3. social desirability (`sdes_c`). 
+
+The data for this dataset was retrieved from @Waters1985. For more information about about the Q-set data frames read the documentation.
+
+### The `ex_qsort` object
+
+qsort package includes example Q-sort datasets for the four different Q-sets (`ex_qsort`):
+
+- `ex_qsort$aqs`
+- `ex_qsort$ccq`
+- `ex_qsort$mbqs`
+- `ex_qsort$pq`
+
+with 10 rows each (i.e., 10 participants) and a varying number of columns depending on the number of Q-set items. The help function of R package qsort lists the details of these examples: see `?ex_qsort`. 
+
+### The `qsort_score` function
+
+The `qsort_score` function uses the criteria scores and/or scales from Q-set datasets to compute scores for Q-sort data. This function takes five arguments:
+
+```r
+  qsort_score(x, qset, item1, subj_id = NULL,  group_id = NULL, qsort_length)
+```
+where `x` is a data frame in wide format containing the data to be analysed: each participant in one row, with scores for Q-set items in different columns, ordered sequentially from the first item (e.g., `ccq1` as in `ex_qsort$ccq`) to the last (e.g., `ccq100` as in `ex_qsort$ccq`), with no other columns in between.
+
+It is possible to import different types of data files into R (e.g., .txt, .csv, .xlsx, .sav) and several on-line tutorials detail how to accomplish this task. If you are using R through RStudio [@rstudio2016] see for example https://support.rstudio.com/hc/en-us/articles/218611977-Importing-Data-with-RStudio} for further details. Alternatively, we suggest checking `import` function of rio package [@Becker2018] (see https://cloud.r-project.org/web/packages/rio/vignettes/rio.html for further details).
+
+The second argument of the `qsort_score` function takes a Q-set data frame such as the data frame objects provided with the package and explained above. The `qsort_score` function will compute scores for the corresponding Q-set.
+
+The third argument, `item1`, must correspond to the name of the column in `x` that contains the scores of the first item of the selected Q-set. R is case sensitive, so you need to type the exact name of this column. `item1` is a character vector and should be in quotes.
+
+The arguments `subj_id` and `group_id` of the`qsort_score` function have a default value of NULL and do not have to be mandatorily specified (the function will compute scores either way). We included them in the function if users want the output data frame of the `qsort_score` function to include a subjects' identification variable (e.g., participant as in `ex_qsort`) and/or a groups' identification variable (e.g., classroom as in `ex_qsort`). Again, names passed into these arguments should correspond exactly to column/variable names in data frame `x`. These identification variables can be particularly handy if you later want to merge/join different datasets together - join functions of the dplyr package [@Wickham2018] are quite useful for this (see for example @wickham2017data, pp. 178 onwards for further details; or http://r4ds.had.co.nz/relational-data.html#outer-join for an online version of the same text). The last argument `qsort_length` must be used to specify the number of items in the qsort. The help function of R package qsort lists the details of `qsort_score` function: see `?qsort_score`.
+
+#### Example 1
+
+The following applies the `qsort_score` function to `ex_qsort$ccq` and stores the output data frame in `data_ccq`:
+
+
+```r
+data_ccq <- qsort_score(x = ex_qsort$ccq, qset_ccq, item1 = "ccq1", subj_id = "participant", group_id = "classroom", qsort_length = 100)
+data_ccq
+#>    participant classroom scomp_c sest_c egores_c egocont_c sdes_c
+#> 1            1         1  -0.074 -0.093   -0.145    -0.012 -0.137
+#> 2            2         1  -0.023  0.008    0.090     0.157  0.053
+#> 3            3         1   0.092  0.086    0.112    -0.021  0.132
+#> 4            4         1  -0.105 -0.113   -0.182    -0.128 -0.160
+#> 5            5         1  -0.010 -0.039   -0.092    -0.092 -0.053
+#> 6            6         2  -0.104 -0.079   -0.042     0.156 -0.089
+#> 7            7         2   0.051  0.079    0.168     0.169  0.124
+#> 8            8         2   0.049  0.066    0.153     0.185  0.118
+#> 9            9         2  -0.024 -0.007    0.009    -0.026  0.007
+#> 10          10         2  -0.039 -0.046   -0.033     0.098 -0.042
+#>    partial_scomp_c partial_sest_c partial_egores_c partial_egocont_c
+#> 1            0.113          0.047           -0.054            -0.007
+#> 2           -0.160         -0.073            0.086             0.155
+#> 3           -0.061         -0.053           -0.002            -0.026
+#> 4            0.088          0.047           -0.089            -0.123
+#> 5            0.085          0.012           -0.090            -0.090
+#> 6           -0.054         -0.004            0.068             0.160
+#> 7           -0.139         -0.053            0.121             0.166
+#> 8           -0.130         -0.068            0.101             0.182
+#> 9           -0.069         -0.026            0.004            -0.026
+#> 10          -0.003         -0.019            0.005             0.100
+#>    shields_s_emreg
+#> 1              4.3
+#> 2              5.9
+#> 3              5.1
+#> 4              3.7
+#> 5              4.4
+#> 6              5.7
+#> 7              5.9
+#> 8              5.9
+#> 9              5.0
+#> 10             5.2
+```
+
+The first two columns of `data_ccq` correspond to `participant` and `classroom` identification variables; the remaining columns refer to correlation values computed from correlating individual Q-sorts with the criteria Q-sorts' scores (present in `qsets$ccq`). The names of these columns follow the column names in the Q-set data frame (e.g., social competence- `scomp_c`, self-esteem- `sest_c`, etc.). Variable names are detailed in the help file of each Q-set data frame object. The `subset` built-in R function can be used to select specific columns from the output data frame:
+
+
+```r
+subset(data_ccq, select = c("participant", "classroom", "scomp_c", "sest_c", "egores_c", "egocont_c"))
+#>    participant classroom scomp_c sest_c egores_c egocont_c
+#> 1            1         1  -0.074 -0.093   -0.145    -0.012
+#> 2            2         1  -0.023  0.008    0.090     0.157
+#> 3            3         1   0.092  0.086    0.112    -0.021
+#> 4            4         1  -0.105 -0.113   -0.182    -0.128
+#> 5            5         1  -0.010 -0.039   -0.092    -0.092
+#> 6            6         2  -0.104 -0.079   -0.042     0.156
+#> 7            7         2   0.051  0.079    0.168     0.169
+#> 8            8         2   0.049  0.066    0.153     0.185
+#> 9            9         2  -0.024 -0.007    0.009    -0.026
+#> 10          10         2  -0.039 -0.046   -0.033     0.098
+```
+
+#### Controlling for social desirability (partial correlations)
+
+@Waters1985 analysis of the discriminant validity of related constructs in the California Child Q-set [@Block1969] and the Preschool Q-set (@Baumrind1968, revised by Wanda Bronson) indicate that social desirability scores should be used to control for response bias when computing participants' scores (correlations) from criterion scores. Response bias in Q-sorts can occur when observers, confronted with two equally descriptive items of a participant, place one of the items higher (or lower) in the sort because it is more (or less) socially acceptable. Thus, the authors state that participant's scores are best indexed by a partial correlation between her/his Q-sort description and the criterion Q-sort, controlling for social desirability.
+The Q-set data frame objects `qset_ccq` and `qset_pq` include social desirability criterion scores. For these two Q-sets the `qsort_score` function will compute partial correlations between individual Q-sorts and criteria Q-sorts' scores, controlling for social desirability. These scores correspond to columns in the output data frame with names starting with `partial_`. In the example above (`data_ccq`), these partial correlations are present in the last four columns:
+
+#### Example 2
+
+The following applies the `qsort_score` function to `ex_qsort$aqs`, and stores the output data frame in `data_aqs`:
+
+
+```r
+data_aqs <- qsort_score(x = ex_qsort$aqs, qset_aqs, item1 = "aqs1", qsort_length = 90)
+data_aqs
+#>     sec_c  dep_c pederson_s_as pederson_s_comp pederson_s_epc
+#> 1  -0.060 -0.019         3.667           5.500            5.0
+#> 2   0.024  0.197         8.000           5.167            4.6
+#> 3   0.003 -0.041         5.667           4.500            5.0
+#> 4  -0.155 -0.017         4.667           4.500            5.0
+#> 5  -0.021  0.079         3.000           7.333            4.4
+#> 6  -0.070 -0.061         3.667           6.500            4.2
+#> 7  -0.101  0.133         6.000           4.000            3.8
+#> 8  -0.114 -0.062         6.333           5.167            4.0
+#> 9  -0.034  0.070         6.667           4.167            4.2
+#> 10 -0.197 -0.089         4.333           5.500            3.4
+#>    pederson_s_fd pederson_s_sb posada_s_ioa posada_s_pcm posada_s_pm
+#> 1          6.071         5.286        5.231        5.000         4.0
+#> 2          5.286         4.643        4.231        5.714         5.2
+#> 3          5.214         5.714        5.231        5.143         6.1
+#> 4          5.571         5.643        3.231        4.857         4.4
+#> 5          5.929         5.000        4.154        5.571         5.1
+#> 6          5.429         5.143        5.385        5.429         3.7
+#> 7          5.214         4.571        4.846        4.571         6.3
+#> 8          5.571         5.500        4.923        3.571         5.9
+#> 9          5.714         4.643        4.846        3.571         5.8
+#> 10         5.786         4.071        3.692        4.714         3.6
+#>    posada_s_sim
+#> 1         5.235
+#> 2         5.353
+#> 3         4.647
+#> 4         4.588
+#> 5         5.529
+#> 6         5.412
+#> 7         4.471
+#> 8         4.529
+#> 9         4.471
+#> 10        4.588
+```
+
+In this example `subj_id` and `group_id` arguments were not specified. Notice that in this case we did not specify `subj_id` and  `group_id`. These are not mandatory arguments. Both have a default value of `NULL` , and thus, the `data_aqs` output data frame will not include a columns with group and subject identification codes.
+
+The data in `data_aqs` refers to the correlation values computed from correlating individual Q-sorts with the criteria Q-sorts' scores (`sec_c` and `dep_c`), or to scales scores (`pederson_s_as` to `posada_s_sim`). Column names starting with `pederson_` refer to @Pederson1995 Attachment Q-Set scales, and column names starting with `posada_` refer to @Posada1995 Attachment Q-Set scales. Again, `subset` function can be used to select specific columns from the output data frame.
+
+### The print_cards function
+
+Besides the `qsort_score` function, the qsort R package also includes `print_cards` function. This function creates a .pdf file where items' descriptions are printed in separate cards. This function takes three arguments:
+
+
+```r
+print_cards(qset, desc_col = "description", dir.print)
+```
+
+where `desc_col` refers to the column name of the Q-set data frame containing items' descriptions, and `dir.print` to the directory path where the .pdf file will be saved. For example:
+
+
+```r
+print_cards(qset_aqs, desc_col = "description", dir.print = getwd())
+```
+
+creates a .pdf file, in in the working directory, with Attachment Q-set item cards.
+
+## Concluding Remarks
+
+The goal here was to introduce readers to an R package that computes scores for Q-sort data, using either criteria scores or scales derived from subsets of items. As far as we know, there are no other tools that perform similar tasks. Both R software and this package are freely available, making this tool easily accessible to researchers using Q-sort data. At the moment, qsort package only analyses data for four different Q-sets, but it can be easily updated to extend its capabilities to other Q-sets.
+
+Even if the reader is not interested in the scoring options provided by this package, the Q-sets provided can be quite useful to aggregate Q-set items' descriptions. Finding these descriptions is not always easy because Q-set authors often fail to provide them in supplementary materials. Additionaly, the `print_cards()` function can be used to easily create cards with items' descriptions for the Q-sorting procedure.
+
+For the moment we only added Q-sets to qsort package we were familiar with and that we know to be widely used in psychological research. We recognize this is a limited sample, but we believe this tool to be of great interest and utility for Q-sort researchers from different areas of social sciences. We invite them to contribute with new or updated versions of existing Q-sets, criterion scores and derived scales. To contribute to this package consult the 
+contribution guidelines at https://github.com/joaordaniel/qsort.
+
+## References

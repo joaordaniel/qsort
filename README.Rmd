@@ -34,7 +34,9 @@ qsort package includes 7 objects:
 * `print_cards()` a function for printing Q-set item cards.
 
 Read the documentation (with `?qset_aqs`, `?qset_ccq`, `?qset_mbqs` and `?qset_pq`) to learn more about
-which criteria sorts and scales are included for each Q-set.
+which criteria sorts and scales are included for each Q-set. Or click the R documentation badge at the top of this page.
+
+[An extended version of this tutorial can be found here](vignettes/qsort-vignette.md)
 
 ## Installation
 
