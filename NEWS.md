@@ -1,4 +1,13 @@
 <!-- NEWS.md is generated from NEWS.Rmd. Please edit that file -->
+qsort 0.2.3 (25/10/2018)
+========================
+
+Minor Changes
+-------------
+
+-   qsets datasets now appear as different objects
+-   qsort\_score function changed accordingly
+
 qsort 0.2.2 (30/07/2018)
 ========================
 
