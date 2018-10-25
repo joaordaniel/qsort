@@ -5,10 +5,10 @@ Version: 0.2.3
 Authors@R: c(
     person("David N", "Sousa", email = "davidnsousa@gmail.com",
     role = c("aut", "cre"),
-    comment = c(ORCID = "https://orcid.org/0000-0001-7277-6447")))
+    comment = c(ORCID = "https://orcid.org/0000-0001-7277-6447"))),
     person("João R", "Daniel", email = "joaordaniel@gmail.com",
     role = c("aut"),
-    comment = c(ORCID = "https://orcid.org/0000-0001-6609-2014")),
+    comment = c(ORCID = "https://orcid.org/0000-0001-6609-2014"))
 Description: Computes scores from Q-sort data, using criteria sorts and
   derived scales from subsets of items.
   The 'qsort' package includes descriptions and scoring procedures
