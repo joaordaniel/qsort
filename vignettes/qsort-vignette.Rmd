@@ -9,7 +9,7 @@ abstract: |
 bibliography: bib-vignette.bib
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{qsort R package: A Tool for Scoring Q-sort Data
+  %\VignetteIndexEntry{qsort R package: A Tool for Scoring Q-sort Data}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
