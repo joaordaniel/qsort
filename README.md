@@ -29,7 +29,13 @@ Read the documentation (with `?qset_aqs`, `?qset_ccq`, `?qset_mbqs` and `?qset_p
 Installation
 ------------
 
-The `qsort` package can be installed from GitHub:
+To install `qsort` package from CRAN:
+
+``` r
+install.packages("qsort")
+```
+
+The `qsort` package can also be installed from GitHub:
 
 ``` r
 # to install packages from github you first need to install devtools package from CRAN.
@@ -38,12 +44,6 @@ install.packages("devtools")
 
 # to install qsort from github type:
 devtools::install_github("joaordaniel/qsort")
-```
-
-To install `qsort` package from CRAN:
-
-``` r
-install.packages("qsort")
 ```
 
 Example
@@ -96,11 +96,11 @@ Read `qsort_score` help file (`?qsort_score`) to learn more about the function's
 Print cards
 -----------
 
-To print item descriptions in separate cards use `print_cards()` function. The example bellow uses the `print_cards()` function to create a pdf file in a user defined directory (e.g., "C:/Users/jd/R/") with Attachment Q-set items.
+To print item descriptions in separate cards use `print_cards()` function. The example bellow uses the `print_cards()` function to create a pdf file with Attachment Q-set items, in a user defined directory (working directory in this case - `getwd()`) .
 
 ``` r
 library(qsort)
-print_cards(qset_aqs, desc_col = "description", dir.print = "C:/Users/jd/R/")
+print_cards(qset_aqs, desc_col = "description", dir.print = getwd())
 ```
 
 Read `print_cards()` help file (`?print_cards`) to learn more about the function's two arguments.

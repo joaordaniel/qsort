@@ -10,10 +10,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="author" content="João R. Daniel" />
 <meta name="author" content="David N. Sousa" />
+<meta name="author" content="João R. Daniel" />
 
-<meta name="date" content="2018-09-12" />
+<meta name="date" content="2018-10-25" />
 
 <title>qsort R package: A Tool for Scoring Q-sort Data</title>
 
@@ -80,19 +80,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 
 <h1 class="title toc-ignore">qsort R package: A Tool for Scoring Q-sort Data</h1>
-<h4 class="author"><em>João R. Daniel</em></h4>
 <h4 class="author"><em>David N. Sousa</em></h4>
-<h4 class="date"><em>2018-09-12</em></h4>
+<h4 class="author"><em>João R. Daniel</em></h4>
+<h4 class="date"><em>2018-10-25</em></h4>
 <div class="abstract">
 <p class="abstract">Abstract</p>
-<p>The use of Q-sets to describe subjective views on a specific research domain, in a way suitable for quantitative data analysis, has a long tradition in psychological research. Generally, Q-sets consist of a large set of items- usually sentences printed on separate cards- that describe personality and behavioural characteristics. These items are sorted into a different number of numerical categories (e.g., 9) based on their salience as descriptors of an individual (e.g., 1- most uncharacteristic to 9- most characteristic). An individual Q-sort (i.e., the scores of all items descriptive of an individual) can then be compared (correlated) with criteria Q-sorts (description of a hypothetical person at the extreme high end of a domain) to index a score for a particular domain. Also, subsets of items can be averaged to derive a scale score. In this paper we present an  package that computes scores from criteria Q-sorts and item scales.</p>
+<p>The use of Q-sets to describe subjective views on a specific research domain, in a way suitable for quantitative data analysis, has a long tradition in developmental psychology research. In this field, Q-sets generally consist of a large set of items- usually sentences printed on separate cards- that describe personality and behavioral characteristics. These items are sorted into a different number of numerical categories (e.g., 9) based on their salience as descriptors of an individual (e.g., 1- most uncharacteristic to 9- most characteristic). An individual Q-sort (i.e., the scores of all items descriptive of an individual) can then be compared (correlated) with criteria Q-sorts (description of a hypothetical person at the extreme high end of a domain) to index a score for a particular domain. Also, subsets of items can be averaged to derive a scale score. In this paper we present an  package that computes scores from criteria Q-sorts and item scales as traditionally used in developmental psychology research.</p>
 </div>
 
 
 
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p>This paper presents a tutorial for an R package qsort to analyse Q-sort data. R <span class="citation">(R Core Team 2018)</span> is a free software environment for statistical computing (<a href="https://cloud.r-project.org/" class="uri">https://cloud.r-project.org/</a>), and R packages are collections of functions and datasets developed by the R community that extend base R functionalities. Due to its open access philosophy, R packages are an important tool for reproducible research. Bellow we describe how to install this package and how to use it to score Q-sort data. For the moment, the qsort package includes descriptions and scoring procedures for four different Q-sets: Attachment Q-set (version 3.0) <span class="citation">(Waters 1995)</span>, California Child Q-set <span class="citation">(J. H. Block and Block 1969)</span>, Maternal Behaviour Q-set (version 3.1) <span class="citation">(Pederson, Moran, and Bento 1999)</span>, and Preschool Q-set (<span class="citation">Baumrind (1968)</span>, revised by Wanda Bronson). These Q-sets have been used extensively in psychological research and a quick search on google scholar shows that in the past five years these references have been cited 500 plus times. Nevertheless, the core function and datasets of this package can be easily updated to accommodate additional Q-sets. If readers of this paper would like to provide additional Q-set descriptions and scoring procedures, please feel free to contact the authors of qsort. We will gladly update the package to expand its capabilities.</p>
+<p>This paper presents a tutorial for an R package qsort to analyse Q-sort data as commonly used in developmental psychology research. R <span class="citation">(R Core Team 2018)</span> is a free software environment for statistical computing (<a href="https://cloud.r-project.org/" class="uri">https://cloud.r-project.org/</a>), and R packages are collections of functions and datasets developed by the R community that extend base R functionalities. Due to its open access philosophy, R packages are an important tool for reproducible research. Bellow we describe how to install this package and how to use it to score Q-sort data. For the moment, the qsort package includes descriptions and scoring procedures for four different Q-sets: Attachment Q-set (version 3.0) <span class="citation">(Waters 1995)</span>, California Child Q-set <span class="citation">(J. H. Block and Block 1969)</span>, Maternal Behaviour Q-set (version 3.1) <span class="citation">(Pederson, Moran, and Bento 1999)</span>, and Preschool Q-set (<span class="citation">Baumrind (1968)</span>, revised by Wanda Bronson). These Q-sets have been used extensively in developmental psychologicy research and a quick search on google scholar shows that in the past five years these references have been cited 500 plus times. Nevertheless, the core function and datasets of this package can be easily updated to accommodate additional Q-sets. If readers of this paper would like to provide additional Q-set descriptions and scoring procedures, please feel free to contact the authors. We will gladly update the package to expand its capabilities.</p>
 </div>
 <div id="a-brief-summary-of-q-sort-methodology" class="section level2">
 <h2>A Brief Summary of Q-sort Methodology</h2>
@@ -321,7 +321,7 @@ data_aqs
 <h2>Concluding Remarks</h2>
 <p>The goal here was to introduce readers to an R package that computes scores for Q-sort data, using either criteria scores or scales derived from subsets of items. As far as we know, there are no other tools that perform similar tasks. Both R software and this package are freely available, making this tool easily accessible to researchers using Q-sort data. At the moment, qsort package only analyses data for four different Q-sets, but it can be easily updated to extend its capabilities to other Q-sets.</p>
 <p>Even if the reader is not interested in the scoring options provided by this package, the Q-sets provided can be quite useful to aggregate Q-set items’ descriptions. Finding these descriptions is not always easy because Q-set authors often fail to provide them in supplementary materials. Additionaly, the <code>print_cards()</code> function can be used to easily create cards with items’ descriptions for the Q-sorting procedure.</p>
-<p>For the moment we only added Q-sets to qsort package we were familiar with and that we know to be widely used in psychological research. We recognize this is a limited sample, but we believe this tool to be of great interest and utility for Q-sort researchers from different areas of social sciences. We invite them to contribute with new or updated versions of existing Q-sets, criterion scores and derived scales. To contribute to this package consult the contribution guidelines at <a href="https://github.com/joaordaniel/qsort" class="uri">https://github.com/joaordaniel/qsort</a>.</p>
+<p>For the moment we only include Q-sets that are widely used in developmental psychological research. We invite users to contribute with new or updated versions of existing Q-sets, criterion scores and derived scales. To contribute to this package consult the contribution guidelines at <a href="https://github.com/joaordaniel/qsort" class="uri">https://github.com/joaordaniel/qsort</a>.</p>
 </div>
 <div id="references" class="section level2 unnumbered">
 <h2>References</h2>
