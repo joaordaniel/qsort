@@ -26,7 +26,8 @@ Imports: cowplot,
 Suggests: devtools,
           knitr,
           roxygen2,
-    rmarkdown
+    rmarkdown,
+    testthat
 Depends: R (>= 2.10)
 License: GPL-3
 Encoding: UTF-8
