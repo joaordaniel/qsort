@@ -90,3 +90,4 @@ This creates a .pdf file, in in the working directory, with Attachment Q-set ite
 
 For further details on how to use the functions provided and the Q-set datasets contained in the ``qsort`` package type `help(qsort)`. At the moment, ``qsort`` package only analyses data for four different Q-sets, but it can be easily updated to extend its capabilities to other Q-sets scored from scales or criteria scores. We believe this tool to be of great interest and utility for developmental psychology researchers and we invite them to contribute with new or updated versions of existing Q-sets, criterion scores and derived scales.
 
+# References
