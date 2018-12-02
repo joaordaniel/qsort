@@ -1,5 +1,5 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/qsort)](https://cran.r-project.org/package=qsort) [![Rdoc](http://www.rdocumentation.org/badges/version/qsort)](http://www.rdocumentation.org/packages/qsort) [![Build Status](https://travis-ci.org/joaordaniel/qsort.svg?branch=master)](https://travis-ci.org/joaordaniel/qsort) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1844717.svg)](https://doi.org/10.5281/zenodo.1844717)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/qsort)](https://cran.r-project.org/package=qsort) [![Rdoc](http://www.rdocumentation.org/badges/version/qsort)](http://www.rdocumentation.org/packages/qsort) [![Build Status](https://travis-ci.org/joaordaniel/qsort.svg?branch=master)](https://travis-ci.org/joaordaniel/qsort) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1844717.svg)](https://doi.org/10.5281/zenodo.1844717) [![status](http://joss.theoj.org/papers/d691db3ee91ae5c10e26464ddda1bd2e/status.svg)](http://joss.theoj.org/papers/d691db3ee91ae5c10e26464ddda1bd2e)
 
 qsort
 =====
