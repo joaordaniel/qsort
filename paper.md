@@ -51,32 +51,44 @@ The following installs and loads ``qsort`` package:
 The ``qsort_score`` function uses the criteria scores and/or scales from the ``qsets`` datasets to compute scores for Q-sort data. The following applies the ``qsort_score`` function to ``ex_qsort$ccq`` and stores the output data frame in ``data_ccq``. 
 
 ```
-R> data_ccq <- qsort_score(ex_qsort$ccq, qset_ccq, qsort_length = 100, item1 = "ccq1", subj_id = "participant", group_id = "classroom")
+R> data_ccq <- qsort_score(ex_qsort$ccq, qset_ccq, qsort_length = 100, 
+          item1 = "ccq1", subj_id = "participant", group_id = "classroom")
 
 R> data_ccq
 
-   participant classroom scomp_c sest_c egores_c egocont_c sdes_c partial_scomp_c
-1            1         1  -0.074 -0.093   -0.145    -0.012 -0.137           0.113
-2            2         1  -0.023  0.008    0.090     0.157  0.053          -0.160
-3            3         1   0.092  0.086    0.112    -0.021  0.132          -0.061
-4            4         1  -0.105 -0.113   -0.182    -0.128 -0.160           0.088
-5            5         1  -0.010 -0.039   -0.092    -0.092 -0.053           0.085
-6            6         2  -0.104 -0.079   -0.042     0.156 -0.089          -0.054
-7            7         2   0.051  0.079    0.168     0.169  0.124          -0.139
-8            8         2   0.049  0.066    0.153     0.185  0.118          -0.130
-9            9         2  -0.024 -0.007    0.009    -0.026  0.007          -0.069
-10          10         2  -0.039 -0.046   -0.033     0.098 -0.042          -0.003
-   partial_sest_c partial_egores_c partial_egocont_c shields_s_emreg
-1           0.047           -0.054            -0.007             4.3
-2          -0.073            0.086             0.155             5.9
-3          -0.053           -0.002            -0.026             5.1
-4           0.047           -0.089            -0.123             3.7
-5           0.012           -0.090            -0.090             4.4
-6          -0.004            0.068             0.160             5.7
-7          -0.053            0.121             0.166             5.9
-8          -0.068            0.101             0.182             5.9
-9          -0.026            0.004            -0.026             5.0
-10         -0.019            0.005             0.100             5.2
+   participant classroom scomp_c sest_c egores_c egocont_c sdes_c
+1            1         1  -0.074 -0.093   -0.145    -0.012 -0.137
+2            2         1  -0.023  0.008    0.090     0.157  0.053
+3            3         1   0.092  0.086    0.112    -0.021  0.132
+4            4         1  -0.105 -0.113   -0.182    -0.128 -0.160
+5            5         1  -0.010 -0.039   -0.092    -0.092 -0.053
+6            6         2  -0.104 -0.079   -0.042     0.156 -0.089
+7            7         2   0.051  0.079    0.168     0.169  0.124
+8            8         2   0.049  0.066    0.153     0.185  0.118
+9            9         2  -0.024 -0.007    0.009    -0.026  0.007
+10          10         2  -0.039 -0.046   -0.033     0.098 -0.042
+   partial_scomp_c partial_sest_c partial_egores_c partial_egocont_c
+1            0.113          0.047           -0.054            -0.007
+2           -0.160         -0.073            0.086             0.155
+3           -0.061         -0.053           -0.002            -0.026
+4            0.088          0.047           -0.089            -0.123
+5            0.085          0.012           -0.090            -0.090
+6           -0.054         -0.004            0.068             0.160
+7           -0.139         -0.053            0.121             0.166
+8           -0.130         -0.068            0.101             0.182
+9           -0.069         -0.026            0.004            -0.026
+10          -0.003         -0.019            0.005             0.100
+   shields_s_emreg
+1              4.3
+2              5.9
+3              5.1
+4              3.7
+5              4.4
+6              5.7
+7              5.9
+8              5.9
+9              5.0
+10             5.2
 ```
 For details about the ``qsort_score`` function usage type ``?qsort_score``. The first two columns of ``data_ccq`` correspond to **qset**, **participant** and **classroom** identification variables; the remaining columns refer to correlation values computed from correlating individual Q-sorts with the criteria Q-sorts' scores (present in ``qsets_ccq``). The names of these columns follow the column names in ``qsets_ccq`` datasets (e.g., social competence- **scomp_c**, self-esteem- **sest_c**, etc.). Variable names are detailed in the help files of the different **qsets**. Scores obtained from partial correlations controlled by social desirability correspond to columns in the output data frame with names starting with **partial_**. 
 
